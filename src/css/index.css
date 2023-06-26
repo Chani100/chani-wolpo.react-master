@@ -9,7 +9,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
- 
+  background-image: url("https://images.pexels.com/photos/10562405/pexels-photo-10562405.jpeg?auto=compress&cs=tinysrgb&w=600");
+   background-size:cover; 
+/*  */
 }
 
 code {

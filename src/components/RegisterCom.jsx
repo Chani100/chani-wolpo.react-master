@@ -31,13 +31,14 @@ const RegisterCom = ({ item, inputState, inputsErrorState, onChange }) => {
             name={item}
             id={item}
             type={item}
+            className="colinput"
             value={inputState ? inputState[item] : ""}
             onChange={onChange}
             isValid={inputState[item]}
             isInvalid={inputsErrorState && inputsErrorState[item]}
           />
           {inputsErrorState && inputsErrorState[item] && (
-            <Form.Control.Feedback type="invalid">
+            <Form.Control.Feedback tooltip type="invalid">
               {inputsErrorState[item].map((item) => (
                 <div key={"{item}-errors" + item}>{item}</div>
               ))}
@@ -60,6 +61,7 @@ const RegisterCom = ({ item, inputState, inputsErrorState, onChange }) => {
             id={item}
             fullwidth="true"
             type={item}
+            className="colinput"
             // label={item}
             /*   placeholder={item} */
             value={inputState ? inputState[item] : ""}
@@ -68,7 +70,7 @@ const RegisterCom = ({ item, inputState, inputsErrorState, onChange }) => {
             isInvalid={inputsErrorState && inputsErrorState[item]}
           />
           {inputsErrorState && inputsErrorState[item] && (
-            <Form.Control.Feedback type="invalid">
+            <Form.Control.Feedback tooltip type="invalid">
               {inputsErrorState[item].map((item) => (
                 <div key={"{item}-errors" + item}>{item}</div>
               ))}

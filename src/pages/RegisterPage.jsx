@@ -9,7 +9,8 @@ import { useState } from "react";
 import validateRegisterSchema from "../validation/registerValidation";
 import axios from "axios";
 import ROUTES from "../routes/ROUTES";
-
+import { toast } from "react-toastify";
+import "../css/navbar.css"
 
 const RegisterPage = () => {
   const [inputState, setInputState] = useState({
@@ -28,12 +29,11 @@ const RegisterPage = () => {
   });
   const [inputsErrorState, setinputsErrorState] = useState([]);
   const navigate = useNavigate();
- /*  const history = useHistory(); */
   const handeleBtnClick = async (ev) => {
     try {
       const joiResponse = validateRegisterSchema(inputState);
       setinputsErrorState(joiResponse);
-
+ toast.error("Invalid user information");
       if (joiResponse) {
         return;
       }
@@ -58,8 +58,7 @@ const RegisterPage = () => {
         zipCode: inputState.zipCode,
         biz: inputState.biz,
          
-      }); 
-      console.log("err");
+      });
   navigate(ROUTES.LOGIN); 
     } catch (err) {
 
@@ -87,7 +86,7 @@ const RegisterPage = () => {
 
   return (
     <Container>
-      <h1>register</h1>
+      <h1 className="title">register</h1>
       <Form>
         <Col md={{ span: 6, offset: 3 }} xs={12}>
           <Row className="mb-3">
@@ -98,7 +97,6 @@ const RegisterPage = () => {
                 inputState={inputState}
                 onChange={handleInputChange}
                 inputsErrorState={inputsErrorState}
-               
               />
             ))}
           </Row>
@@ -106,21 +104,27 @@ const RegisterPage = () => {
             <Form.Check
               type="checkbox"
               id="biz"
+              className="biz"
               label="I want to receive updates and exclusive offers, plus a 5% discount on every order"
               onClick={handleBizChange}
             />
           </Form.Group>
           <Row className="mb-3">
-            <Button variant="primary" type="submit" onClick={cancel}>
+            <Button
+            /*   variant="primary" */
+              type="submit"
+              onClick={cancel}
+              className="colinput"
+            >
               CANCEL
             </Button>
           </Row>
           <Row className="mb-3">
             <Button
-              variant="primary"
-              /*   type="submit" */
+              className="colinput"
+             /*  variant="primary" */
               onClick={handeleBtnClick}
-              disabled={inputsErrorState !== null}
+             disabled={inputsErrorState !== null} 
             >
               Sign Up
             </Button>

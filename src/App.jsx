@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import "./App.css";
-import Router from "./routes/Router"
+import "../src/css/App.css";
+import Router from "./routes/Router";
 import { useSelector } from "react-redux";
 import useLoggedIn from "./hooks/useLoggedIn";
 import Navbarpage from "./components/Navbar";
@@ -38,9 +38,9 @@ function App() {
     (bigPie) => bigPie.darkThemeSlice.isDarkTheme
   );
   return (
-   /*  <ThemeProvider theme={isDarkTheme ? createTheme(dark) : createTheme(light)}>
-    
-       <ToastContainer
+    /* <ThemeProvider theme={isDarkTheme ? createTheme(dark) : createTheme(light)}> */
+    <Container>
+      <ToastContainer
         position="top-center"
         autoClose={5000}
         hideProgressBar={false}
@@ -51,18 +51,18 @@ function App() {
         draggable={false}
         pauseOnHover
         theme="colored"
-      />  */
-      <Container>
+      />
+
       <header>
         <Navbarpage />
       </header>
-      
+
       <main>
         <Router />
       </main>
       <Footer />
     </Container>
-   /* </ThemeProvider> */
+    /* </ThemeProvider>  */
   );
 }
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Breadcrumb, BreadcrumbItem } from "react-bootstrap";
-
+import "../css/navbar.css";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -10,6 +10,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
+import ROUTES from "../routes/ROUTES";
 
 const Navbars = () => {
   const [activeLink, setActiveLink] = useState("");
@@ -21,33 +22,37 @@ const Navbars = () => {
   return (
     <Navbar className="navbar" expand="lg" /* className="bg-body-tertiary" */>
       <Container fluid>
-        <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          {/*  <Breadcrumb
-          
-          > 
-            <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
-            <Breadcrumb.Item href="#">Library</Breadcrumb.Item>
-          </Breadcrumb> */}
+         
           <Nav
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
             <Nav.Link
-              href="#action1"
+              id="nav"
+              href={ROUTES.HOME}
               className={activeLink === "Home" ? "active" : ""}
               onClick={handleLinkClick}
             >
               Home
             </Nav.Link>
             <Nav.Link
-              href="#action2"
+              id="nav"
+              href={ROUTES.LOGIN}
               className={activeLink === "Link" ? "active" : ""}
               onClick={handleLinkClick}
             >
-              Link
+              login
+            </Nav.Link>
+            <Nav.Link
+              id="nav"
+              href={ROUTES.REGISTER}
+              className={activeLink === "Link" ? "active" : ""}
+              onClick={handleLinkClick}
+            >
+              register
             </Nav.Link>
           </Nav>
 
