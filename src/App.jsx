@@ -39,7 +39,7 @@ function App() {
   );
   return (
     /* <ThemeProvider theme={isDarkTheme ? createTheme(dark) : createTheme(light)}> */
-    <Container>
+    <div>
       <ToastContainer
         position="top-center"
         autoClose={5000}
@@ -61,7 +61,7 @@ function App() {
         <Router />
       </main>
       <Footer />
-    </Container>
+    </div>
     /* </ThemeProvider>  */
   );
 }

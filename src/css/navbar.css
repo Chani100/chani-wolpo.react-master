@@ -26,14 +26,7 @@
   border-radius: 50%;
 }
 
-.title {
-  margin: 50px;
-  text-align: center;
-  font-weight: 800;
-  color: rgb(252, 215, 94);
-  text-shadow: -3px -3px 4px rgba(253, 104, 119, 0.93);
-  font-size: 5em;
-}
+
 
 .bg-light {
   position: relative;
@@ -46,13 +39,5 @@
   font-weight: 500;
 }
 
-.biz {
-  color: rgb(252, 215, 94);
-}
-
-.colinput {
-  border: 5px solid rgb(252, 215, 94);
- background-color:rgba(252, 215, 94, 0.37); 
-} 
 
 

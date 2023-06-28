@@ -10,7 +10,7 @@ import validateRegisterSchema from "../validation/registerValidation";
 import axios from "axios";
 import ROUTES from "../routes/ROUTES";
 import { toast } from "react-toastify";
-import "../css/navbar.css"
+import "../css/pages.css"
 
 const RegisterPage = () => {
   const [inputState, setInputState] = useState({
@@ -111,7 +111,7 @@ const RegisterPage = () => {
           </Form.Group>
           <Row className="mb-3">
             <Button
-            /*   variant="primary" */
+              variant="warning"
               type="submit"
               onClick={cancel}
               className="colinput"
@@ -122,9 +122,9 @@ const RegisterPage = () => {
           <Row className="mb-3">
             <Button
               className="colinput"
-             /*  variant="primary" */
+              variant="warning"
               onClick={handeleBtnClick}
-             disabled={inputsErrorState !== null} 
+              /* disabled={inputsErrorState !== null}  */
             >
               Sign Up
             </Button>

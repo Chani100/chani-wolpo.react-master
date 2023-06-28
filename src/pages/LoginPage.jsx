@@ -11,7 +11,7 @@ import ROUTES from "../routes/ROUTES";
 import useLoggedIn from "../hooks/useLoggedIn";
 import validateLoginSchema from "../validation/loginValidation";
 import { toast } from "react-toastify";
-import "../css/navbar.css";
+import "../css/pages.css";
 
 import { Toast } from "bootstrap/dist/js/bootstrap.bundle";
 const LoginPage = () => {
@@ -83,6 +83,7 @@ const LoginPage = () => {
                     id="email"
                     label="Email Address"
                     name="email"
+                    className="colinput"
                     autoComplete="email"
                     value={inputState.email}
                     onChange={handleInputChange}
@@ -112,6 +113,7 @@ const LoginPage = () => {
                     name="password"
                     id="password"
                     type="password"
+                    className="colinput"
                     value={inputState.password}
                     onChange={handleInputChange}
                     isValid={inputState.password}
@@ -128,13 +130,19 @@ const LoginPage = () => {
               </Form.Group>
             </Row>
             <Row className="mb-3">
-              <Button variant="primary" type="submit" onClick={cancel}>
+              <Button
+                variant="warning"
+                type="submit"
+                onClick={cancel}
+                className="colinput"
+              >
                 CANCEL
               </Button>
             </Row>
             <Row className="mb-3">
               <Button
-                variant="primary"
+                variant="warning"
+                className="colinput"
                 onClick={handeleBtnClick}
                 disabled={inputsErrorState !== null}
               >
