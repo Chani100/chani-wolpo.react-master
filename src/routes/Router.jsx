@@ -1,8 +1,9 @@
 import { Route, Routes } from "react-router-dom";
- import HomePage from "../pages/HomePage"; 
+import HomePage from "../pages/HomePage"; 
 import ROUTES from "./ROUTES";
 import RegisterPage from "../pages/RegisterPage";
- import LoginPage from "../pages/LoginPage"; 
+import LoginPage from "../pages/LoginPage";
+import MenuPage from "../pages/MenuPage";
 // import EditCardPage from "../pages/EditCardPage";
 // import RP1 from "../pages/RP1";
 // import RP2 from "../pages/RP2";
@@ -25,7 +26,8 @@ const Router = () => {
     <Routes>
       <Route path={ROUTES.HOME} element={<HomePage />} /> 
       <Route path={ROUTES.REGISTER} element={<RegisterPage />} />
-     <Route path={ROUTES.LOGIN} element={<LoginPage />} /> 
+      <Route path={ROUTES.LOGIN} element={<LoginPage />} />
+      <Route path={ROUTES.MENU} element={<MenuPage />} />
     </Routes>
     //       <Route path={ROUTES.ABOUT} element={<About />} />
     //       <Route  path="infor/:id" element={<InformationCard />} />

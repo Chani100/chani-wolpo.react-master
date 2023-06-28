@@ -13,7 +13,6 @@ import validateLoginSchema from "../validation/loginValidation";
 import { toast } from "react-toastify";
 import "../css/pages.css";
 
-import { Toast } from "bootstrap/dist/js/bootstrap.bundle";
 const LoginPage = () => {
   const [inputState, setInputState] = useState({
     email: "",
@@ -27,16 +26,17 @@ const LoginPage = () => {
     try {
       setInputsErrorState(joiResponse);
       if (joiResponse) {
-        toast.error("Invalid user information");
+       
         return;
       }
       const { data } = await axios.post("/users/login", inputState);
       localStorage.setItem("token", data.token);
       loggedIn();
-      navigate(ROUTES.HOME);
+      navigate(ROUTES.HOME); 
     } catch (err) {
-      toast.error("errrrrrrrrrrror");
-      Toast.error("hhhhhhhhhhhhh"); 
+   console.log(err.response.data);
+      toast.error("There is an error,"+ err.response.data.msg); 
+     
     }
     }
     const handleInputChange = (ev) => {

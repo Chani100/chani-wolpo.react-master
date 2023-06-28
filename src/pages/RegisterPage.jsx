@@ -16,15 +16,15 @@ const RegisterPage = () => {
   const [inputState, setInputState] = useState({
     firstName: "",
     lastName: "",
-    imageUrl: "",
-    imageAlt: "",
+   /*  imageUrl: "",
+    imageAlt: "", */
     phone: "",
     email: "",
     password: "",
     city: "",
     street: "",
     houseNumber: "",
-    zipCode: "",
+   /*  zipCode: "", */
     biz: false,
   });
   const [inputsErrorState, setinputsErrorState] = useState([]);
@@ -33,7 +33,7 @@ const RegisterPage = () => {
     try {
       const joiResponse = validateRegisterSchema(inputState);
       setinputsErrorState(joiResponse);
- toast.error("Invalid user information");
+
       if (joiResponse) {
         return;
       }
@@ -61,7 +61,7 @@ const RegisterPage = () => {
       });
   navigate(ROUTES.LOGIN); 
     } catch (err) {
-
+ toast.error("Invalid user information");
 
     }
  

@@ -54,12 +54,60 @@
   width: 18rem;
 }
 .buttonhome {
-   margin-top: 40%;
-   font-weight:600;
-    font-size: 18px;
-    margin-left: 3%;
-    padding: 12px 30px; 
-    border-radius: 50px;
+  margin-top: 5%;
+  font-weight: 600;
+  font-size: 18px;
+
+ padding: 6px 30px ; 
+  border-radius: 50px;
   border: 5px solid rgb(252, 215, 94);
-   background-color: rgba(252, 215, 94, 0.37);
+  background-color: rgba(252, 215, 94, 0.37);
+}
+.phome {
+  color: aliceblue;
+  font-size: 20px;
+  text-align: justify;
+}
+
+.cardmenu{
+  width: 300%;
+}
+.imagealert{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 1%;
+}
+.alert{
+  margin: 1%;
+  color: aliceblue;
+  font-size: 2em;
+  padding: 1px;
+  border: 5px solid rgb(252, 215, 94);
+  background-color: rgba(252, 215, 94, 0.37);
+}
+.alertlink{
+  
+  margin:1%;
+}
+
+@media (max-width: 991px) {
+
+}
+@media (max-width: 768px) {
+  .phome {
+    font-size: 14px;
+  line-height: 17px;
+  }
+  .title {
+  margin: 40px;
+  text-align: center;
+  font-weight: 600;
+  color: rgb(252, 215, 94);
+  text-shadow: -3px -3px 4px rgba(253, 104, 119, 0.93);
+  font-size: 3em;
+}
+.buttonhome {
+  justify-content: center;
+}
 }
