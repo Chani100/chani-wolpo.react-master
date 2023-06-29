@@ -78,21 +78,26 @@
   border-radius: 50%;
   margin: 1%;
 }
+.imagealert:hover{
+  width: 250px;
+  height: 250px;
+ border-radius: 10%;
+}
 .alert {
   margin: 1%;
   color: aliceblue;
   font-size: 14px;
   /* shadow: -3px -3px 4px rgb(252, 215, 94); */
-  background-color: rgba(252, 215, 94, 0);
+  background-color:rgba(252, 215, 94, 0);
   width: 95%;
   padding-bottom: 2%;
 }
-.alertlink {
-  margin-right: 5%;
-  line-height: 1%;
- /*  margin-top: 3%;
-  float: right; */
-}
+ .alertlink {
+  background-color:  rgba(252, 215, 94, 0);
+  width: 10em;
+  color: aliceblue;
+ } 
+
 
 
 @media (max-width: 991px) {

@@ -5,6 +5,7 @@ import CardFood from "../components/carsd.jsx";
 import Button from "react-bootstrap/Button";
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
+import PopupExample from "../components/popup";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const HomePage = () => {
   };
   return (
     <Container>
+      <PopupExample />
       <h1 className="title">Welcome</h1>
       <Container className="phome">
         <p>
