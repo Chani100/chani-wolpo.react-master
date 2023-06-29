@@ -4,7 +4,7 @@
 
 .colinput {
   border: 5px solid rgb(252, 215, 94);
-  background-color: rgba(252, 215, 94, 0.37);
+   background-color: rgba(252, 215, 94, 0.37);
 }
 
 .title {
@@ -54,7 +54,7 @@
   width: 18rem;
 }
 .buttonhome {
-  margin-top: 5%;
+  margin-top: 2%;
   font-weight: 600;
   font-size: 18px;
 

@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import ROUTES from "../routes/ROUTES";
 import CarouselHome from "../components/carosel.jsx";
 import CardFood from "../components/carsd.jsx";
@@ -15,7 +15,6 @@ const HomePage = () => {
   };
   return (
     <Container>
-      <PopupExample />
       <h1 className="title">Welcome</h1>
       <Container className="phome">
         <p>
@@ -36,16 +35,16 @@ const HomePage = () => {
         </p>
 
         <div className="divbuttonehome">
+         
           <Button variant="warning" className="buttonhome">
             Book a table
           </Button>
-          <Button
+         
+            <PopupExample 
             variant="warning"
-            className="buttonhome"
             onClick={handleButtonClick}
-          >
-            Menu order
-          </Button>
+        />
+       
         </div>
       </Container>
       {/*  <CarouselHome /> */}
