@@ -19,7 +19,7 @@ const RegisterCom = ({ item, inputState, inputsErrorState, onChange }) => {
   const isRequired = RequiredF.includes(item);
   if (item === "biz") return;
   return isRequired ? (
-    <Col xs={12} md={6}>
+    <Col  xs={12} md={6} >
       <Form.Group as={Col} controlid={item}>
         <FloatingLabel
           controlid="floatingInput"
