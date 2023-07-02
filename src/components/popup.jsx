@@ -1,65 +1,57 @@
 import axios from "axios";
 import React, { useState } from "react";
-import {
-  Button,
-  Col,
-  FloatingLabel,
-  Form,
-  InputGroup,
-  Modal,
-  Row,
-} from "react-bootstrap";
-import { BsFillHandThumbsUpFill } from "react-icons/bs";
+import { Button, Form, Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import validateOrders from "../validation/orderValidtion";
 import ROUTES from "../routes/ROUTES";
+import useLoggedIn from "../hooks/useLoggedIn";
+import PopupComponents from "./PopupComponent";
 
 const PopupExample = () => {
   const [inputState, setInputState] = useState({
     name: "",
     phone: "",
+    email:"",
     city: "",
     street: "",
     houseNumber: "",
     takeAway: false,
-    isBusiness: false,
   });
-  console.log(inputState);
   const [inputsErrorState, setInputsErrorState] = useState(null);
-  console.log(inputsErrorState);
   const [show, setShow] = useState(false);
+ /*  const logdin = useLoggedIn; */
   const navigate = useNavigate();
   const handeleBtnClick = async (ev) => {
     try {
       const joiResponse = validateOrders(inputState);
       setInputsErrorState(joiResponse);
-
       if (joiResponse) {
         toast.error("Invalid user information");
         return;
       }
-      if (inputState.isBusiness === "") {
-        inputState.isBusiness = false;
-      }
-      if (inputState.takeAway === "") {
-        inputState.takeAway = false;
-      }
-      await axios.post("/orders", {
+
+      await axios.post("/orders",  {
         name: inputState.name,
         phone: inputState.phone,
+        email: inputState.email,
         city: inputState.city,
         street: inputState.street,
         houseNumber: inputState.houseNumber,
-        isBusiness: inputState.isBusiness,
         takeAway: inputState.takeAway,
       });
       toast.success("The registration was done successfully");
       handleClose();
     } catch (err) {
+      console.log("err", err);
       toast.error("Invalid user information");
     }
   };
+   const handleTakeAwayChange = (ev) => {
+     let newInputState = JSON.parse(JSON.stringify(inputState));
+     newInputState["takeAway"] = ev.target.checked;
+     setInputState(newInputState);
+   };
   const handleInputChange = (ev) => {
     console.log(ev.target.value);
     let newInputState = JSON.parse(JSON.stringify(inputState));
@@ -68,12 +60,11 @@ const PopupExample = () => {
     const joiResponse = validateOrders(newInputState);
     setInputsErrorState(joiResponse);
   };
-
+  const keys = Object.keys(inputState);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
     <div>
-       
       <Button variant="warning" onClick={handleShow} className="buttonhome">
         Click to order
       </Button>
@@ -83,127 +74,35 @@ const PopupExample = () => {
           <Modal.Title>my order</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Text>Name</InputGroup.Text>
-            <Form.Control
-              required
-              size="sm"
-              id="name"
-              label="Name"
-              name="name"
-              className="colinput"
-              autoComplete="name"
-              value={inputState.name}
+          {keys.map((item) => (
+            <PopupComponents
+              key={item}
+              item={item}
+              inputState={inputState}
               onChange={handleInputChange}
-              /*  isValid={inputState.name}*/
-              isInvalid={inputsErrorState && inputsErrorState.name}
+              inputsErrorState={inputsErrorState}
             />
-            {inputsErrorState && inputsErrorState.name && (
-              <Form.Control.Feedback type="invalid">
-                {inputsErrorState.name.map((item) => (
-                  <div key={"name-errors" + item}>{item}</div>
-                ))}
-              </Form.Control.Feedback>
-            )}
-          </InputGroup>
-
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Text>phone</InputGroup.Text>
-            <Form.Control
-              required
-              size="sm"
-              id="phone"
-              className="colinput"
-              autoComplete="phone"
-              value={inputState.phone}
-              onChange={handleInputChange}
-              /*  isValid={inputState.phone} */
-              isInvalid={inputsErrorState && inputsErrorState.phone}
+          ))}
+          <Form.Group className="mb-3" id="takeAway"      >
+            <Form.Check
+              type="checkbox"
+              label="takeAway"
+              value={inputState.takeAway}
+              color="warning"
+              
+            
+              onClick={handleTakeAwayChange}
             />
-            {inputsErrorState && inputsErrorState.phone && (
-              <Form.Control.Feedback type="invalid">
-                {inputsErrorState.phone.map((item) => (
-                  <div key={"phone-errors" + item}>{item}</div>
-                ))}
-              </Form.Control.Feedback>
-            )}
-          </InputGroup>
-
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Text>city</InputGroup.Text>
-            <Form.Control
-              required
-              size="sm"
-              id="city"
-              className="colinput"
-              autoComplete="city"
-              value={inputState.city}
-              onChange={handleInputChange}
-              /*  isValid={inputState.city} */
-              isInvalid={inputsErrorState && inputsErrorState.city}
-            />
-            {inputsErrorState && inputsErrorState.city && (
-              <Form.Control.Feedback type="invalid">
-                {inputsErrorState.city.map((item) => (
-                  <div key={"city-errors" + item}>{item}</div>
-                ))}
-              </Form.Control.Feedback>
-            )}
-          </InputGroup>
-
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Text>street</InputGroup.Text>
-            <Form.Control
-              required
-              size="sm"
-              id="street"
-              className="colinput"
-              autoComplete="street"
-              value={inputState.street}
-              onChange={handleInputChange}
-              /* isValid={inputState.street} */
-              isInvalid={inputsErrorState && inputsErrorState.street}
-            />
-            {inputsErrorState && inputsErrorState.street && (
-              <Form.Control.Feedback type="invalid">
-                {inputsErrorState.street.map((item) => (
-                  <div key={"street-errors" + item}>{item}</div>
-                ))}
-              </Form.Control.Feedback>
-            )}
-          </InputGroup>
-
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Text>houseNumber</InputGroup.Text>
-            <Form.Control
-              required
-              size="sm"
-              id="houseNumber"
-              className="colinput"
-              autoComplete="houseNumber"
-              value={inputState.houseNumber}
-              onChange={handleInputChange}
-              /*   isValid={inputState.houseNumber} */
-              isInvalid={inputsErrorState && inputsErrorState.houseNumber}
-            />
-            {inputsErrorState && inputsErrorState.houseNumber && (
-              <Form.Control.Feedback type="invalid">
-                {inputsErrorState.houseNumber.map((item) => (
-                  <div key={"houseNumber-errors" + item}>{item}</div>
-                ))}
-              </Form.Control.Feedback>
-            )}
-          </InputGroup>
-
-          <Button variant="warning" onClick={handleClose} className="colinput">
+          </Form.Group>
+          {/* <Button variant="warning" onClick={handleClose} className="colinput">
             Save Changes
           </Button>
 
           <Button variant="warning" onClick={handleClose} className="colinput">
             Save Changes
-          </Button>
+          </Button> */}
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer> 
           <Button
             variant="warning"
             onClick={handeleBtnClick}
@@ -215,7 +114,7 @@ const PopupExample = () => {
             variant="warning"
             type="submit"
             onClick={handleClose}
-            className="colinput"
+          className="colinput"
           >
             Cansel
           </Button>

@@ -24,7 +24,6 @@ const Navbars = () => {
       <Container fluid>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-         
           <Nav
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: "100px" }}
@@ -53,6 +52,14 @@ const Navbars = () => {
               onClick={handleLinkClick}
             >
               register
+            </Nav.Link>
+            <Nav.Link
+              id="nav"
+              href={ROUTES.MENU}
+              className={activeLink === "Link" ? "active" : ""}
+              onClick={handleLinkClick}
+            >
+              menu
             </Nav.Link>
           </Nav>
 
