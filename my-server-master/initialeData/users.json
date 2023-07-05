@@ -1,0 +1,39 @@
+[
+  {
+    "firstName": "user1",
+    "lastName": "One",
+    "phone": "0500000000",
+    "email": "One@gmail.com",
+    "password": "Aa123456!",
+    "city": "Ashkeluna",
+    "street": "nof ha hof",
+    "houseNumber": 255,
+    "isAdmin": false,
+    "isBusiness": false
+  },
+
+  {
+    "firstName": "user2",
+    "lastName": "two",
+    "phone": "0500000000",
+    "email": "two@gmail.com",
+    "password": "Aa123456!",
+    "city": "Ashkeluna",
+    "street": "nof ha hof",
+    "houseNumber": 255,
+    "isAdmin": false,
+    "isBusiness": true
+  },
+  {
+    "firstName": "user3",
+    "lastName": "three",
+    "phone": "0500000000",
+    "email": "three@gmail.com",
+    "password": "Aa123456!",
+    "city": "Ashkeluna",
+    "street": "nof ha hof",
+    "houseNumber": 255,
+    "isBusiness": true,
+    "isAdmin": true
+  }
+]

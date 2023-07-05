@@ -38,6 +38,7 @@ axios.interceptors.request.use((config) => {
   return config; // send the new data
 });
 
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>

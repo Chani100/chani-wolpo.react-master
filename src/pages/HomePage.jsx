@@ -1,15 +1,16 @@
 import { Container, Row } from "react-bootstrap";
 import ROUTES from "../routes/ROUTES";
-import CarouselHome from "../components/carosel.jsx";
-import CardFood from "../components/carsd.jsx";
+import CarouselHome from "../components/Carosel.jsx";
+import CardFood from "../components/Carsd.jsx";
 import Button from "react-bootstrap/Button";
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
-import PopupExample from "../components/popup";
+import PopupExample from "../components/OrdersPopup";
+import PopupBook from "../components/BookAtablePopup";
 
 const HomePage = () => {
   const navigate = useNavigate();
-  
+
   const handleButtonClick = () => {
     navigate(ROUTES.MENU);
   };
@@ -35,16 +36,12 @@ const HomePage = () => {
         </p>
 
         <div className="divbuttonehome">
-         
-          <Button variant="warning" className="buttonhome">
+          {/*  <Button variant="warning" className="buttonhome">
             Book a table
-          </Button>
-         
-            <PopupExample 
-            variant="warning"
-            onClick={handleButtonClick}
-        />
-       
+          </Button> */}
+          <PopupBook variant="warning" onClick={handleButtonClick} />
+
+          <PopupExample variant="warning" onClick={handleButtonClick} />
         </div>
       </Container>
       {/*  <CarouselHome /> */}

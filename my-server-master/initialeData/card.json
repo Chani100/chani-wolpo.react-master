@@ -1,0 +1,23 @@
+[
+  {
+    "title": "card1",
+    "description": "Create a first card",
+    "imageUrl": "https://cdn.xxl.thumbs.canstockphoto.co.il/%D7%99%D7%9C%D7%93%D7%94-%D7%95%D7%A7%D7%98%D7%95%D7%A8-%D7%93%D7%95%D7%92%D7%9E%D7%94-%D7%91%D7%95%D7%91%D7%94-%D7%AA%D7%9E%D7%95%D7%A0%D7%94_csp7498887.jpg",
+    "imageAlt": "doll",
+    "price": "150"
+  },
+  {
+    "title": "card2",
+    "description": "Create a first card",
+    "imageUrl": "https://cdn.xxl.thumbs.canstockphoto.co.il/%D7%99%D7%9C%D7%93%D7%94-%D7%95%D7%A7%D7%98%D7%95%D7%A8-%D7%93%D7%95%D7%92%D7%9E%D7%94-%D7%91%D7%95%D7%91%D7%94-%D7%AA%D7%9E%D7%95%D7%A0%D7%94_csp7498887.jpg",
+    "imageAlt": "doll",
+    "price": "100"
+  },
+  {
+    "title": "card3",
+    "description": "Create a first card",
+    "imageUrl": "https://cdn.xxl.thumbs.canstockphoto.co.il/%D7%99%D7%9C%D7%93%D7%94-%D7%95%D7%A7%D7%98%D7%95%D7%A8-%D7%93%D7%95%D7%92%D7%9E%D7%94-%D7%91%D7%95%D7%91%D7%94-%D7%AA%D7%9E%D7%95%D7%A0%D7%94_csp7498887.jpg",
+    "imageAlt": "doll",
+    "price": "50"
+  }
+]
