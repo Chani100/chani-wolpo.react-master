@@ -8,16 +8,28 @@ import useQueryParams from "../hooks/useQueryParams";
 import { useSelector } from "react-redux";
 import jwt_decode from "jwt-decode";
 import { BsTrashFill } from "react-icons/bs";
+import ButtonCreatCom from "../components/ButtenCraetCom";
 const MenuPage = () => {
   const [originalCardsArr, setOriginalCardsArr] = useState(null);
   const [cardsArr, setCardsArr] = useState(null);
   const [orderIdMenu, setOrderIdMenu] = useState(null);
-  const [cardrIdMenu, setCardIdMenu] = useState({
-    card_id: "649ab96775cadb77fbffba05",
-  });
+  const [cardrIdMenu, setCardIdMenu] = useState({});
   const navigate = useNavigate();
   let qparams = useQueryParams();
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
+  const id = jwt_decode(localStorage.token)._id;
+
+  useEffect(() => {
+    const withdrawalOfOrderId = async () => {
+      try {
+        const order = await axios.get("/orders/my-order-findOne/" + id);
+        setOrderIdMenu(order.data);
+      } catch (err) {
+        toast.error(err.response._id);
+      }
+    };
+    withdrawalOfOrderId();
+  }, [orderIdMenu]);
   useEffect(() => {
     axios
       .get("/cards")
@@ -25,7 +37,6 @@ const MenuPage = () => {
         filterFunc(data);
       })
       .catch((err) => {
-        console.log("err", err);
         toast.error("err from axios" + "" + err.response.data.msg);
       });
   }, []);
@@ -50,13 +61,6 @@ const MenuPage = () => {
       );
     }
   };
-  /* const handleFavBtnClick = async () => {
-    try {
-      await axios.patch("/cards/like/:id/" + id);
-      onDeletefav(id);
-      setfavState(!favState);
-    } catch (err) {}
-  }; */
   useEffect(() => {
     filterFunc();
   }, [qparams.filter]);
@@ -81,27 +85,12 @@ const MenuPage = () => {
   if (!cardsArr) {
     return <Spinner animation="grow" variant="warning" />;
   }
-  const useridorder = jwt_decode(localStorage.token)._id;
-   /* console.log(useridorder); */
 
-  const withdrawalOfOrderId = async (id) => {
-    try {
-      const order = await axios.get("/orders/my-order-findOne/" + id);
-      const orderId = order.data;
-      setOrderIdMenu(orderId);
-      console.log(orderIdMenu);
-    } catch (err) {
-      toast.error(err.response._id);
-    }
-  };
-  
-console.log(useridorder);
-  withdrawalOfOrderId(useridorder);
 
- 
   return (
     <Container>
       <h1 className="title"> menu</h1>
+
       <Row className="mb-3">
         {cardsArr.map((item) => (
           <MenuComponent
@@ -114,9 +103,14 @@ console.log(useridorder);
             price={item.price}
             orderId={orderIdMenu}
             onDelet={handleDeleteFromInitialCardsArr}
+            onEdit={handleEditFromInitialCardsArr}
+            canEdit={payload && payload.isAdmin}
+            canDelete={payload && payload.isAdmin}
+            canAdd={!(payload && payload.isAdmin)}
           />
         ))}
       </Row>
+      <ButtonCreatCom canCreate={payload && payload.isAdmin} />
     </Container>
   );
 };

@@ -1,14 +1,10 @@
 import { Col, FloatingLabel, Form } from "react-bootstrap";
 
-const EditComponent = ({ item, inputState, onChange, inputsErrorState }) => {
-  
-  if (item === inputState.bizNumber) return;
-  
+
+const CreatCardMenuCom = ({ item, inputState, inputsErrorState, onChange }) => {
   return (
     <Col xs={12} md={6}>
-      <Form.Group as={Col} controlid={item.bizNumber}/>
       <Form.Group as={Col} controlid={item}>
-
         <FloatingLabel
           controlid="floatingInput"
           label={item + "*"}
@@ -21,6 +17,7 @@ const EditComponent = ({ item, inputState, onChange, inputsErrorState }) => {
             className="colinput"
             value={inputState ? inputState[item] : ""}
             onChange={onChange}
+            isValid={inputState[item]}
             isInvalid={inputsErrorState && inputsErrorState[item]}
           />
           {inputsErrorState && inputsErrorState[item] && (
@@ -35,5 +32,4 @@ const EditComponent = ({ item, inputState, onChange, inputsErrorState }) => {
     </Col>
   );
 };
-
-export default EditComponent;
+export default CreatCardMenuCom;

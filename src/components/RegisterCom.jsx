@@ -26,7 +26,6 @@ const RegisterCom = ({ item, inputState, inputsErrorState, onChange }) => {
           label={item + "*"}
           className="mb-3"
         >
-          {/* <Form.Control type={item} placeholder={item} /> */}
           <Form.Control
             name={item}
             id={item}

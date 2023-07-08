@@ -1,10 +1,11 @@
 import { Route, Routes } from "react-router-dom";
-import HomePage from "../pages/HomePage"; 
+import HomePage from "../pages/HomePage";
 import ROUTES from "./ROUTES";
 import RegisterPage from "../pages/RegisterPage";
 import LoginPage from "../pages/LoginPage";
 import MenuPage from "../pages/MenuPage";
-// import EditCardPage from "../pages/EditCardPage";
+import EditMenuPage from "../pages/EditCardMenuPage";
+import CraetCardMenu from "../pages/CreatCardMenu";
 // import RP1 from "../pages/RP1";
 // import RP2 from "../pages/RP2";
 // import ProtectedRoute from "../components/ProtectedRoute";
@@ -15,7 +16,7 @@ import MenuPage from "../pages/MenuPage";
 // import NestedPage2 from "../pages/NestedRoutePage/NestedPage2";
 // import About from "../pages/About";
 // import MyCards from "../pages/MyCards";
-// import CreateCardPage from "../pages/CreateCardPage";
+ 
 // import FavCardsPage from "../pages/FavCards";
 // import InformationCard from "../pages/InformationCard";
 // import SandBox from "../pages/Sandbox";
@@ -24,12 +25,15 @@ import MenuPage from "../pages/MenuPage";
 const Router = () => {
   return (
     <Routes>
-      <Route path={ROUTES.HOME} element={<HomePage />} /> 
+      <Route path={ROUTES.CREATMENU} element={<CraetCardMenu />} />
+      <Route path={ROUTES.HOME} element={<HomePage />} />
       <Route path={ROUTES.REGISTER} element={<RegisterPage />} />
       <Route path={ROUTES.LOGIN} element={<LoginPage />} />
       <Route path={ROUTES.MENU} element={<MenuPage />} />
+      <Route path="/edit/:id" element={<EditMenuPage />} />
     </Routes>
-    //       <Route path={ROUTES.ABOUT} element={<About />} />
+    
+    //  <Route path={ROUTES.ABOUT} element={<About />} />
     //       <Route  path="infor/:id" element={<InformationCard />} />
 
     //       <Route

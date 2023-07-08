@@ -1,6 +1,0 @@
-{
-  "validatorOption": "Joi",
-  "hashOption":"bcryptjs",
-  "dbOption": "mongo"
-
-}

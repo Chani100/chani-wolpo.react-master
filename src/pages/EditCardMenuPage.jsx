@@ -1,32 +1,20 @@
 import { useState, useEffect } from "react";
 
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-
-import Alert from "@mui/material/Alert";
 import { useNavigate, useParams } from "react-router-dom";
-import validateEditCardSchema, {
-  validateEditCardParamsSchema,
-} from "../validation/editCardValidation";
-import ROUTES from "../routes/ROUTES";
-import CreateIcon from "@mui/icons-material/Create";
 
-import { CircularProgress } from "@mui/material";
+import ROUTES from "../routes/ROUTES";
+
 import axios from "axios";
 import atom from "../logo.svg";
 import { toast } from "react-toastify";
+import { Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
+import { BsFillPencilFill } from "react-icons/bs";
+import EditComponent from "../components/EditCardCommponent";
+import validateEditSchema, {
+  validateEditCardParamsSchema,
+} from "../validation/editValidationCardMenu";
 
-import EditComponent from "../components/EditComponent";
-
-const EditCardPage = () => {
+const EditMenuPage = () => {
   const { id } = useParams();
 
   const [inputState, setInputState] = useState(null);
@@ -40,30 +28,17 @@ const EditCardPage = () => {
           navigate("*");
           return;
         }
-        const { data } = await axios.get("/cards/card/" + id);
+        const { data } = await axios.get("/cards/" + id);
         let newInputState = {
           ...data,
         };
-        if (data.image && data.image.url) {
-          newInputState.url = data.image.url;
-        } else {
-          newInputState.url = "";
-        }
-        if (data.image && data.image.alt) {
-          newInputState.alt = data.image.alt;
-        } else {
-          newInputState.alt = "";
-        }
-        if (data.zipCode == null) {
-          newInputState.zipCode = "";
-        }
-        delete newInputState.image;
-        delete newInputState.likes;
-        delete newInputState._id;
-        delete newInputState.user_id;
         delete newInputState.bizNumber;
+        delete newInputState.menuOrder;
+        delete newInputState.likes;
+        delete newInputState.user_id;
+        delete newInputState.image;
+        delete newInputState._id;
         delete newInputState.createdAt;
-        delete newInputState.address;
         delete newInputState.__v;
         setInputState(newInputState);
       } catch (err) {}
@@ -71,58 +46,39 @@ const EditCardPage = () => {
   }, [id]);
   const handeleBtnClick = async (ev) => {
     try {
-      const joiResponse = validateEditCardSchema(inputState);
+      const joiResponse = validateEditSchema(inputState);
       setinputsErrorState(joiResponse);
       if (!joiResponse) {
         await axios.put("/cards/" + id, inputState);
-        navigate(ROUTES.HOME);
+
         toast.success("The change was successfully saved");
+        navigate(ROUTES.MENU);
       }
-    } catch (err) {}
+    } catch (err) {
+      console.log("err", err);
+      toast.error("There is an error," + "" + err.response.data.message);
+    }
   };
   const handleChange = (ev) => {
     let newInputState = JSON.parse(JSON.stringify(inputState));
     newInputState[ev.target.id] = ev.target.value;
     setInputState(newInputState);
-    const joiResponse = validateEditCardSchema(newInputState);
+    const joiResponse = validateEditSchema(newInputState);
     setinputsErrorState(joiResponse);
   };
   if (!inputState) {
-    return <CircularProgress color="secondary" />;
+    return <Spinner animation="grow" variant="warning" />;
   }
   const cancel = () => {
     navigate(ROUTES.HOME);
   };
   const keys = Object.keys(inputState);
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <Box
-        sx={{
-          marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <CreateIcon />
-        </Avatar>
-        <Typography variant="h3">Edit Card</Typography>
-        <Box
-          component="img"
-          sx={{
-            height: 233,
-            width: 350,
-            maxHeight: { xs: 233, md: 167 },
-            maxWidth: { xs: 350, md: 250 },
-          }}
-          alt={inputState.alt ? inputState.alt : ""}
-          src={inputState.url ? inputState.url : atom}
-        />
-
-        <Box component="div" noValidate sx={{ mt: 3 }}>
-          <Grid container spacing={2}>
+    <Container>
+      <h1 className="title">edit</h1>
+      <Form>
+        <Col md={{ span: 6, offset: 3 }} xs={12}>
+          <Row className="mb-3">
             {keys.map((item) => (
               <EditComponent
                 key={item}
@@ -132,33 +88,31 @@ const EditCardPage = () => {
                 inputsErrorState={inputsErrorState}
               />
             ))}
-          </Grid>
-          <Grid item xs={6}>
-            <Button
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 1 }}
-              /*  {...(!joiResponse ? { disabled: false } : { disabled: true })}  */
-              onClick={handeleBtnClick}
-            >
-              save
-            </Button>{" "}
-          </Grid>
-          <Grid item xs={6}>
-            <Button
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 1 }}
-              onClick={cancel}
-            >
-              cancel
-            </Button>
-          </Grid>
-          <Grid container justifyContent="flex-end"></Grid>
-        </Box>
-      </Box>
+          </Row>
+        </Col>
+      </Form>
+      <Row className="mb-3">
+        <Button
+          className="colinput"
+          variant="warning"
+          onClick={handeleBtnClick}
+        >
+          save
+        </Button>
+        
+      </Row>
+      <Row className="mb-3">
+        <Button
+          variant="warning"
+          type="submit"
+          onClick={cancel}
+          className="colinput"
+        >
+          cancel
+        </Button>
+      </Row>
     </Container>
   );
 };
 
-export default EditCardPage;
+export default EditMenuPage;
