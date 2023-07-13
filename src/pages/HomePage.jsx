@@ -1,12 +1,15 @@
-import { Container, Row } from "react-bootstrap";
+import { Container, Image, Row } from "react-bootstrap";
 import ROUTES from "../routes/ROUTES";
 import CarouselHome from "../components/Carosel.jsx";
-import CardFood from "../components/Carsd.jsx";
+
 import Button from "react-bootstrap/Button";
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import PopupExample from "../components/OrdersPopup";
 import PopupBook from "../components/BookAtablePopup";
+import Payment from "../components/Payment";
+import CreditPaymentForm from "../components/Payment";
+import PaymentForm from "../components/Payment";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -43,10 +46,9 @@ const HomePage = () => {
 
           <PopupExample variant="warning" onClick={handleButtonClick} />
         </div>
+        <PaymentForm />
       </Container>
       {/*  <CarouselHome /> */}
-
-      <CardFood />
     </Container>
   );
 };

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Container, Row, Spinner } from "react-bootstrap";
+import { Container, Image, Row, Spinner } from "react-bootstrap";
 import MenuComponent from "../components/MenuComponent";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -9,6 +9,8 @@ import { useSelector } from "react-redux";
 import jwt_decode from "jwt-decode";
 import { BsTrashFill } from "react-icons/bs";
 import ButtonCreatCom from "../components/ButtenCraetCom";
+import CompletionOfAnOrder from "../components/CompletionOfAnOrder";
+import "bootstrap/dist/css/bootstrap.min.css";
 const MenuPage = () => {
   const [originalCardsArr, setOriginalCardsArr] = useState(null);
   const [cardsArr, setCardsArr] = useState(null);
@@ -83,10 +85,15 @@ const MenuPage = () => {
     navigate(`/infor/${id}`);
   };
   if (!cardsArr) {
-    return <Spinner animation="grow" variant="warning" />;
+    return (
+      <Spinner
+        animation="grow"
+        variant="warning"
+       className="spiner"
+      />
+    );
   }
-
-
+console.log(orderIdMenu);
   return (
     <Container>
       <h1 className="title"> menu</h1>
@@ -111,6 +118,7 @@ const MenuPage = () => {
         ))}
       </Row>
       <ButtonCreatCom canCreate={payload && payload.isAdmin} />
+      <CompletionOfAnOrder variant="warning" orderId={orderIdMenu} />
     </Container>
   );
 };

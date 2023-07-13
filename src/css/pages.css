@@ -36,9 +36,6 @@
 .carousel-image {
   height: 20rem;
   width: 100%;
-  /* object-fit: contain; */
-  /*   object-fit: cover; */
-  /* object-position: center;*/
 }
 
 .carousel {
@@ -138,16 +135,102 @@
   display: flexbox;
 }
 .buttenAddMenu {
- /*  background-color: rgba(252, 215, 94, 0); */
-  width: 3em;
+  /*  background-color: rgba(252, 215, 94, 0); */
+  width: 3.3em;
   height: 2em;
-  margin: 1%;
+  margin-bottom: 1%;
   display: flexbox;
+  border-radius: 0px;
+}
+.buttenCompletionOfAnOrder {
+  background-color: rgba(252, 215, 94, 0);
+  width: 30em;
+  color: aliceblue;
+  margin: 2em;
+}
+.filled {
+  background-color: rgba(252, 215, 94, 1);
+}
+.spiner {
+  width: 3rem;
+  height: 3rem;
+  margin: 2%;
+}
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-@media (max-width: 991px) {
+.product-item {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+.buttons-wrappera {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  position: absolute;
+  margin-top: 5%;
+  right: 50%;
+  transform: translateY(-30%);
+}
+
+.product-details {
+  margin-left: 10px;
+}
+.paymentForm {
+  border: 4px solid black;
+  border-radius: 50px;
+  margin: 2%;
+  display: block;
+  width: 241px;
+}
+.paymentCard {
+  display: block;
+  color: black;
+}
+.LLL {
+  background-color: rgba(252, 215, 94, 1);
+  font-size: 1.2em;
+}
+.table > :not(caption) > * > * {
+  opacity: 0.7;
+}
+
+.tablacrm {
+  font-weight: bold;
+  color: black;
+}
+@media (max-width: 993px) {
+  .tablacrm {
+    font-size: 11px;
+  }
+  .buttons-wrappera {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    /*  justify-content: flex-start;  */
+    position: absolute;
+    margin-top: 5%;
+    right: 30%;
+    transform: translateY(-30%);
+  }
 }
 @media (max-width: 768px) {
+  .buttons-wrappera {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: absolute;
+    right: 0;
+    transform: translateY(-35%);
+  }
+
+  .tablacrm {
+    font-size: 8px;
+  }
+
   .phome {
     font-size: 14px;
     line-height: 17px;
@@ -162,5 +245,13 @@
   }
   .buttonhome {
     justify-content: center;
+  }
+}
+@media (max-width: 608px) {
+  .medieCrm {
+    display: none;
+  }
+  .tablacrm {
+    font-size: 12px;
   }
 }

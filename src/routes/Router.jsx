@@ -6,6 +6,7 @@ import LoginPage from "../pages/LoginPage";
 import MenuPage from "../pages/MenuPage";
 import EditMenuPage from "../pages/EditCardMenuPage";
 import CraetCardMenu from "../pages/CreatCardMenu";
+import CRMPage from "../pages/CrmPage";
 // import RP1 from "../pages/RP1";
 // import RP2 from "../pages/RP2";
 // import ProtectedRoute from "../components/ProtectedRoute";
@@ -30,9 +31,10 @@ const Router = () => {
       <Route path={ROUTES.REGISTER} element={<RegisterPage />} />
       <Route path={ROUTES.LOGIN} element={<LoginPage />} />
       <Route path={ROUTES.MENU} element={<MenuPage />} />
+      <Route path={ROUTES.CRM} element={<CRMPage />} />
       <Route path="/edit/:id" element={<EditMenuPage />} />
     </Routes>
-    
+
     //  <Route path={ROUTES.ABOUT} element={<About />} />
     //       <Route  path="infor/:id" element={<InformationCard />} />
 
