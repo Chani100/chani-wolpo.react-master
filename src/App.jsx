@@ -8,9 +8,10 @@ import "../src/css/App.css";
 import Router from "./routes/Router";
 import { useSelector } from "react-redux";
 import useLoggedIn from "./hooks/useLoggedIn";
-import Navbarpage from "./components/Navbar";
+
 import { Container } from "react-bootstrap";
 import Footer from "./components/Footer";
+import Navbars from "./components/Navbarrr";
 
 const light = {
   palette: {
@@ -54,7 +55,7 @@ function App() {
       />
 
       <header>
-        <Navbarpage />
+        <Navbars />
       </header>
 
       <main>

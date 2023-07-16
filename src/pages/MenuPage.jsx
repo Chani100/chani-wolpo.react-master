@@ -20,7 +20,6 @@ const MenuPage = () => {
   let qparams = useQueryParams();
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
   const id = jwt_decode(localStorage.token)._id;
-
   useEffect(() => {
     const withdrawalOfOrderId = async () => {
       try {
@@ -85,15 +84,9 @@ const MenuPage = () => {
     navigate(`/infor/${id}`);
   };
   if (!cardsArr) {
-    return (
-      <Spinner
-        animation="grow"
-        variant="warning"
-       className="spiner"
-      />
-    );
+    return <Spinner animation="grow" variant="warning" className="spiner" />;
   }
-console.log(orderIdMenu);
+  console.log(orderIdMenu);
   return (
     <Container>
       <h1 className="title"> menu</h1>
@@ -111,9 +104,9 @@ console.log(orderIdMenu);
             orderId={orderIdMenu}
             onDelet={handleDeleteFromInitialCardsArr}
             onEdit={handleEditFromInitialCardsArr}
-            canEdit={payload && payload.isAdmin}
-            canDelete={payload && payload.isAdmin}
-            canAdd={!(payload && payload.isAdmin)}
+            canEdit={payload && payload && payload.isAdmin}
+            canDelete={payload && payload && payload.isAdmin}
+           canAdd={!(payload && payload.isAdmin)} 
           />
         ))}
       </Row>

@@ -10,6 +10,7 @@ import {
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const MenuComponent = ({
   id,
@@ -23,8 +24,11 @@ const MenuComponent = ({
   onEdit,
   canDelete,
   canEdit,
-  canAdd,
+   canAdd,
 }) => {
+  const isLoggedIn = useSelector(
+    (bigPieBigState) => bigPieBigState.authSlice.isLoggedIn
+  );
   const [amount, setaAmount] = useState(1);
   const [isFilled, setIsFilled] = useState(false);
   const handleAddToOrder = async () => {
@@ -137,46 +141,45 @@ const MenuComponent = ({
                       ""
                     )}
                   </div>
-                   <div className="buttons-wrapper">
-                  {canAdd ? (
-                    <Button
-                      variant="warning"
-                      onClick={handleAddToOrder}
-                      className={isFilled ? "alertlink filled" : "alertlink"}
-                      /*  href="#" */
-                    >
-                      {isFilled ? "Added to order" : "Add to order"}
-                    </Button>
-                  ) : (
-                    ""
-                  )}
-                </div>
+                  <div className="buttons-wrapper">
+                    {canAdd ? (
+                      <Button
+                        variant="warning"
+                        onClick={handleAddToOrder}
+                        className={isFilled ? "alertlink filled" : "alertlink"}
+                        /*  href="#" */
+                      >
+                        {isFilled ? "Added to order" : "Add to order"}
+                      </Button>
+                    ) : (
+                      ""
+                    )}
+                  </div>
 
-                <Row>
-                  {canDelete ? (
-                    <Button
-                      variant="warning"
-                      className="buttenDelEdiMenu"
-                      onClick={handelButtenDelete}
-                    >
-                      <BsTrashFill />
-                    </Button>
-                  ) : (
-                    ""
-                  )}
-                  {canEdit ? (
-                    <Button
-                      variant="warning"
-                      className="buttenDelEdiMenu"
-                      onClick={handeleBtnEdit}
-                    >
-                      <BsPencilFill />
-                    </Button>
-                  ) : (
-                    ""
-                  )}
-                 
-                </Row> 
+                  <Row>
+                    {canDelete ? (
+                      <Button
+                        variant="warning"
+                        className="buttenDelEdiMenu"
+                        onClick={handelButtenDelete}
+                      >
+                        <BsTrashFill />
+                      </Button>
+                    ) : (
+                      ""
+                    )}
+                    {canEdit ? (
+                      <Button
+                        variant="warning"
+                        className="buttenDelEdiMenu"
+                        onClick={handeleBtnEdit}
+                      >
+                        <BsPencilFill />
+                      </Button>
+                    ) : (
+                      ""
+                    )}
+                  </Row>
                 </div>
               </div>
             </div>

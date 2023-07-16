@@ -5,9 +5,10 @@ const ROUTES = {
   LOGIN: "/login",
   MENU: "/menu",
 CREATMENU:"/craetmenu",
-CRM:"/crm"
+CRM:"/crm",
+MUNELOGOUT:"/muneLogout",
   //   PROFILE: "/profile",
-  //   LOGOUT: "/logout",
+   LOGOUT: "/logout",
   //   ABOUT:"/about",
 
   //   FAVCARD:"/favCards"

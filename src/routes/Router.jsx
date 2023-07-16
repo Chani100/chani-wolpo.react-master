@@ -9,15 +9,16 @@ import CraetCardMenu from "../pages/CreatCardMenu";
 import CRMPage from "../pages/CrmPage";
 // import RP1 from "../pages/RP1";
 // import RP2 from "../pages/RP2";
-// import ProtectedRoute from "../components/ProtectedRoute";
+import ProtectedRoute from "../components/ProtectedRoute";
+import MenuLogoutPage from "../pages/MenuLogout";
 // import ProfilePage from "../pages/ProfilePage";
 // import SuperProtectedRoute from "../components/SuperProtectedRoute";
-// import LogoutPage from "../pages/LogoutPage";
+import LogoutPage from "../pages/LogoutPage";
 // import NestedPage1 from "../pages/NestedRoutePage/NestedPage1";
 // import NestedPage2 from "../pages/NestedRoutePage/NestedPage2";
 // import About from "../pages/About";
 // import MyCards from "../pages/MyCards";
- 
+
 // import FavCardsPage from "../pages/FavCards";
 // import InformationCard from "../pages/InformationCard";
 // import SandBox from "../pages/Sandbox";
@@ -33,15 +34,15 @@ const Router = () => {
       <Route path={ROUTES.MENU} element={<MenuPage />} />
       <Route path={ROUTES.CRM} element={<CRMPage />} />
       <Route path="/edit/:id" element={<EditMenuPage />} />
+      <Route path={ROUTES.MUNELOGOUT} element={<MenuLogoutPage />} />
+      <Route
+        path={ROUTES.LOGOUT}
+        element={<ProtectedRoute element={<LogoutPage />} />}
+      />
     </Routes>
-
     //  <Route path={ROUTES.ABOUT} element={<About />} />
-    //       <Route  path="infor/:id" element={<InformationCard />} />
+    //       <Route  path="infor/:id" element=// {<InformationCard />} />
 
-    //       <Route
-    //         path={ROUTES.LOGOUT}
-    //         element={<ProtectedRoute element={<LogoutPage />} />}
-    //       />
     //       <Route
     //         path={ROUTES.FAVCARD}
     //         element={<ProtectedRoute element={<FavCardsPage />} />}

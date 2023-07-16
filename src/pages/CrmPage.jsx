@@ -26,9 +26,9 @@ const CRMPage =()=>{
   }
   
 return (
-  <Table striped bordered hover >
+  <Table striped bordered hover>
     <thead className="tablacrm">
-      <tr className="LLL">
+      <tr className="crmHeader">
         <th>Biz Number</th>
         <th className="medieCrm">Name</th>
         <th>Phone</th>
