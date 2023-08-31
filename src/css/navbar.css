@@ -1,17 +1,20 @@
 .navbar {
-   
- background-color:rgba(252, 215, 94, 0.181); 
+  background-color: rgba(252, 215, 94, 0.181);
 }
 .active {
-  color: aliceblue;
-  /* background-color: #da6161;  */
-  background-color: rgb(252, 215, 94);
-  /*  text-shadow: -3px -3px 4px rgba(253, 104, 119, 0.93); */
+  /* color: aliceblue; */
+  /*  background-color: #da6161;  */
+  /*  background-color: rgb(252, 215, 94); */
+  text-shadow: -3px -3px 4px rgba(253, 104, 119, 0.93);
+ 
+  border-bottom:4px solid rgba(253, 104, 119, 0.93); 
+  /*  border-color: rgba(253, 104, 119, 0.93); 
+     border-bottom-left-radius:  ; */
 }
 
-.navbar .nav-link.active {
+/* .navbar .nav-link.active {
   color: blue;
-}
+} */
 
 .profile-picture-container {
   display: flex;
@@ -26,8 +29,6 @@
   border-radius: 50%;
 }
 
-
-
 .bg-light {
   position: relative;
   bottom: 0;
@@ -38,6 +39,3 @@
   font-size: 1.5em;
   font-weight: 500;
 }
-
-
-

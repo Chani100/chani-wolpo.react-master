@@ -68,18 +68,18 @@ const Navbars = () => {
               About
             </Nav.Link>
 
-            {isLoggedIn ? ( 
+            {isLoggedIn ? (
               <Nav.Link
                 id="nav"
-                href={ROUTES.MENU}
+                href={ROUTES.MUNELOGOUT}
                 className={activeLink === "Link" ? "active" : ""}
                 onClick={handleLinkClick}
               >
                 Menu
               </Nav.Link>
-             ) : (
+            ) : (
               ""
-           )}
+            )}
             {isLoggedIn ? (
               <Nav.Link
                 id="nav"
@@ -117,6 +117,18 @@ const Navbars = () => {
             ) : (
               ""
             )}
+            {!isLoggedIn ? (
+              <Nav.Link
+                id="nav"
+                href={ROUTES.MUNELOGOUT}
+                className={activeLink === "Link" ? "active" : ""}
+                onClick={handleLinkClick}
+              >
+                General-Menu
+              </Nav.Link>
+            ) : (
+              ""
+            )}
 
             {isLoggedIn && payload.isAdmin ? (
               <Nav.Link
@@ -131,12 +143,14 @@ const Navbars = () => {
               ""
             )}
           </Nav>
-          <div sx={{ display: { xs: "none", md: "inline" } }}>
+         
+        
+          {/* /* <div sx={{ display: { xs: "none", md: "inline" } }}>
             {isDarkTheme ? "Dark" : "Light"} Mode
           </div>
-          <Button onClick={changeTheme}>
+           <Button onClick={changeTheme}>
             {isDarkTheme ? <BsFillSunFill /> : <BsMoonFill />}
-          </Button>
+          </Button> */} 
           <Form className="d-flex">
             <Form.Control
               type="search"

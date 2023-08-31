@@ -3,20 +3,20 @@ import Joi from "joi";
 import validation from "./validation";
 
 const bookAtableValidation = Joi.object({
+ 
   name: Joi.string().min(2).max(256).required(),
-  email: Joi.string()
-    .min(6)
-    .max(256)
-    .required()
-    .email({ tlds: { allow: false } }),
   phone: Joi.string()
     .regex(new RegExp(/0[0-9]{1,2}\-?\s?[0-9]{3}\s?[0-9]{4}/))
     .required(),
-
-  isBusiness: Joi.boolean().required(),
+   date: Joi.string()
+    .regex(new RegExp(/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/))
+    .required(),
+  time: Joi.string()
+    .regex(new RegExp(/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/))
+    .required(),
+  numOfPeople: Joi.string().min(1).max(10).required(), 
   bizNumber: Joi.number().min(1000000).max(9999999).allow(""),
-
- /*  orderStatus: Joi.boolean().required(), */
+  /*  orderStatus: Joi.boolean().required(), */
 });
 
 const validatebookAtable = (userInput) => validation(bookAtableValidation, userInput);

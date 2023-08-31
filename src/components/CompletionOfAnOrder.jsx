@@ -90,9 +90,9 @@ const CompletionOfAnOrder = ({ orderId }) => {
       handleShow();
     }
   };
-/* const hndelPayment=()=>{
-  navigate("/.Payment");
-} */
+  const btnPayment = () => {
+    navigate(ROUTES.PAYMENT);
+  };
   return (
     <Container>
       <Offcanvas show={show} onHide={handleClose}>
@@ -138,7 +138,7 @@ const CompletionOfAnOrder = ({ orderId }) => {
           <Button
             variant="warning"
             type="submit"
-           /*  onClick={hndelPayment} */
+            onClick={btnPayment}
             className="colinput"
           >
             for payment

@@ -1,4 +1,4 @@
-import { Button, Col, Container, Form, ListGroup, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Form, Image, ListGroup, Row } from "react-bootstrap";
 import ImagePopup from "./ImagePopup";
 import {
   BsCurrencyDollar,
@@ -14,16 +14,16 @@ import { useSelector } from "react-redux";
 
 const MenuLogoutCom = ({
   id,
-  orderId,
   imageUrl,
   alt,
   title,
   description,
   price,
+  listOrCard,
 }) => {
   return (
-    <Container>
-      <Col>
+    <Col xs={12} md={6}>
+      {listOrCard ? (
         <Form.Group as={Col}>
           <ListGroup className="alert">
             <div className="product-list">
@@ -41,8 +41,21 @@ const MenuLogoutCom = ({
             </div>
           </ListGroup>
         </Form.Group>
-      </Col>
-    </Container>
+      ) : (
+        <Form.Group as={Col}>
+          <Card className="cardMenu">
+              <Image src={imageUrl} className="img_title" roundedCircle />
+              <Card.Body className="cardBody">
+                <Card.Title className="card_title">{title}</Card.Title>
+                <Card.Text className="card_text">{description}</Card.Text>
+                <h5 className="card_price">
+                  {price} <BsCurrencyDollar />
+                </h5>
+                </Card.Body>
+                </Card>
+        </Form.Group>
+      )}
+    </Col>
   );
 };
 export default MenuLogoutCom;

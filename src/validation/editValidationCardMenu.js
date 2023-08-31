@@ -9,6 +9,7 @@ const editCardSchema = Joi.object({
 
   imageAlt: Joi.string().min(2).max(256).required(),
   price: Joi.number().min(1).required(),
+  category: Joi.string().min(2).max(256).required(),
   bizNumber: Joi.number().min(1000000).max(9999999).allow(""),
   user_id: Joi.string().hex().length(24),
 });

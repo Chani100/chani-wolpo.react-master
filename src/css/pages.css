@@ -1,6 +1,46 @@
 .biz {
   color: rgb(252, 215, 94);
 }
+.divbuttonehome {
+  display: flex;
+  gap: 3em;
+}
+.imgSmile {
+  width: 250px;
+  height: 250px;
+}
+.divPopupSmile .modal-content {
+  background-color: #f8f863;
+  border-radius: 50%;
+  height:350px;
+  width: 350px;
+  
+}
+.imgPopupSmile {
+  border-radius: 50%;
+  height: 350px;
+  width: 350px;
+   justify-content: center;
+  align-items: center;
+}
+.divPopupSmile .animationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: imgPopupSmile 1s ease-in-out infinite alternate;
+}
+
+@keyframes imgPopupSmile {
+  0% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+.cardSpies {
+  border-radius: 50%;
+}
 
 .colinput {
   border: 5px solid rgb(252, 215, 94);
@@ -23,6 +63,21 @@
   text-shadow: -3px -3px 4px rgba(253, 104, 119, 0.93);
   font-size: 2.5em;
 }
+.subtitleh2 {
+  margin: 50px;
+  text-align: left;
+  font-weight: 800;
+  color: rgb(252, 215, 94);
+  text-shadow: -3px -3px 4px rgba(253, 104, 119, 0.93);
+  font-size: 3em;
+}
+.radioMenu {
+  color: aliceblue;
+}
+.input_category {
+  height: 59px;
+}
+
 .titleHome {
   margin: 50px;
   text-align: center;
@@ -40,11 +95,75 @@
 
 .carousel {
   height: 100%;
-  width: 100%;
+  width: 20%;
   object-fit: cover;
   object-position: center;
 }
+.recommenders {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-color: rgb(252, 215, 94);
+  border: 3px solid black;
+}
+.div_recommenders {
+  height: 300px;
+}
+.imge_recommenders {
+  width: 80px;
+  height: 80px;
+  margin: -390px 0px 0px 120px;
+}
+.text_recommenders {
+  margin: 50px 0px 0px 60px;
+  font-family: "MV Boli";
+  color: rgba(253, 104, 119, 0.93);
+  width: 180px;
+}
+.icon_recommenders {
+  font-size: 3em;
+  margin: -290px 0 0 170px;
+  color: rgba(253, 104, 119, 0.93);
+  text-shadow: -3px -3px 4px rgba(253, 104, 119, 0.93);
+}
+.react-multiple-carousel__arrow--right {
+  display: none;
+}
+.react-multiple-carousel__arrow--left {
+  display: none;
+}
 
+.cardMenu {
+  width: 350px;
+  height: 400px;
+  margin-left: 250px;
+  background-color: rgba(241, 208, 89, 0.638);
+  border: 3px solid black;
+}
+.img_title {
+  margin-left: 60px;
+  margin-top: 15px;
+  border: 3px solid black;
+  width: 150px;
+  height: 150px;
+  box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5) inset,
+    -2px -2px 5px rgba(0, 0, 0, 0.5) inset;
+}
+.card_title {
+  text-align: center;
+}
+.card_text {
+  text-align: center;
+}
+.card_price {
+  text-align: center;
+}
+.cardButten {
+  margin-left: 25px;
+}
+#cardButten {
+  width: 250px;
+}
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -64,18 +183,20 @@
   margin-left: 1.5%;
   margin-right: 1.5%;
   margin-bottom: 2%;
-  width: 18rem;
+  width: 19rem;
 }
 .buttonhome {
   margin-top: 2%;
   font-weight: 600;
   font-size: 18px;
 
+  margin-bottom: 50px;
   padding: 6px 30px;
   border-radius: 50px;
   border: 5px solid rgb(252, 215, 94);
   background-color: rgba(252, 215, 94, 0.37);
 }
+
 .phome {
   color: aliceblue;
   font-size: 20px;
@@ -108,6 +229,7 @@
   background-color: rgba(252, 215, 94, 0);
   width: 10em;
   color: aliceblue;
+  margin: 0 0 0 0%;
 }
 .containercreat {
   display: flex;
@@ -144,9 +266,14 @@
 }
 .buttenCompletionOfAnOrder {
   background-color: rgba(252, 215, 94, 0);
-  width: 30em;
+  width: 90%;
   color: aliceblue;
-  margin: 2em;
+  margin: 2em 0;
+}
+.buttonList {
+  margin: 50px 150px;
+  width: 50px;
+  height: 50px;
 }
 .filled {
   background-color: rgba(252, 215, 94, 1);
@@ -164,7 +291,7 @@
 .product-item {
   display: flex;
   align-items: center;
-  margin-right: 20px;
+  margin-left: 5%;
 }
 .buttons-wrappera {
   display: flex;
@@ -172,23 +299,32 @@
   flex-direction: column;
   position: absolute;
   margin-top: 5%;
-  right: 50%;
+  left: 80%;
   transform: translateY(-30%);
 }
 
 .product-details {
   margin-left: 10px;
+  /*   width: 200px; */
 }
 .paymentForm {
   border: 4px solid black;
   border-radius: 50px;
   margin: 2%;
   display: block;
-  width: 241px;
+  width: 251px;
+  height: 50px;
+  margin: 10px 0 10px 0px;
+}
+.buttonPay {
+  margin: 10px 0 10px 0px;
+  width: 251px;
 }
 .paymentCard {
   display: block;
   color: black;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 .crmHeader {
   background-color: rgba(252, 215, 94, 1);
@@ -202,6 +338,32 @@
   font-weight: bold;
   color: black;
 }
+.inputBookTable {
+  align-items: center;
+  margin: 0 0 0 0;
+  width: 160px;
+  height: 80px;
+}
+.table-page .row {
+  width: 227px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.table-page .row > * {
+  align-items: center;
+  width: 70%;
+  padding: 0 0 0 0;
+}
+.table-page .button_book {
+  border: 5px solid rgb(252, 215, 94);
+  background-color: rgba(252, 215, 94, 0.37);
+  width: 40%;
+  margin: 2em 30%;
+  align-items: center;
+  border-radius: 25px;
+  color: darkgoldenrod;
+}
+
 @media (max-width: 993px) {
   .tablacrm {
     font-size: 11px;
@@ -213,7 +375,6 @@
     /*  justify-content: flex-start;  */
     position: absolute;
     margin-top: 5%;
-    right: 30%;
     transform: translateY(-30%);
   }
 }
@@ -223,14 +384,15 @@
     flex-direction: column;
     justify-content: flex-start;
     position: absolute;
-    right: 0;
     transform: translateY(-35%);
   }
 
   .tablacrm {
     font-size: 8px;
   }
-
+  .product-details {
+    width: 200px;
+  }
   .phome {
     font-size: 14px;
     line-height: 17px;
@@ -253,5 +415,54 @@
   }
   .tablacrm {
     font-size: 12px;
+  }
+}
+
+@media (max-width: 520px) {
+  .inputBookTable {
+    /*   align-items: center; */
+    margin: 0 0 0 0;
+    width: 160px;
+    height: 40px;
+  }
+  .table-page .row {
+    width: 100%;
+    display: block;
+  }
+  .table-page .row > * {
+    align-items: center;
+    width: 100%;
+    padding: 0 0 0 0;
+  }
+  .bookContainer {
+    margin: 0 0 0 10%;
+  }
+}
+@media (max-width: 430px) {
+  .buttons-wrappera {
+    margin-top: 70px;
+  }
+  .product-item {
+    display: block;
+    align-items: center;
+    margin-right: 20px;
+  }
+  .alertlink {
+    width: 8em;
+  }
+  .buttenAddMenu {
+    width: 2.64em;
+  }
+}
+@media (max-width: 499px) {
+  .table-page .button_book {
+    width: 60%;
+    margin: 2em 20%;
+  }
+}
+@media (max-width: 375px) {
+  .table-page .button_book {
+    width: 80%;
+    margin: 2em 10%;
   }
 }

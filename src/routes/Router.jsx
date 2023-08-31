@@ -14,6 +14,10 @@ import MenuLogoutPage from "../pages/MenuLogout";
 // import ProfilePage from "../pages/ProfilePage";
 // import SuperProtectedRoute from "../components/SuperProtectedRoute";
 import LogoutPage from "../pages/LogoutPage";
+import PaymentForm from "../pages/PaymentForm"; 
+import Contact from "../pages/Contact";
+
+
 // import NestedPage1 from "../pages/NestedRoutePage/NestedPage1";
 // import NestedPage2 from "../pages/NestedRoutePage/NestedPage2";
 // import About from "../pages/About";
@@ -35,6 +39,9 @@ const Router = () => {
       <Route path={ROUTES.CRM} element={<CRMPage />} />
       <Route path="/edit/:id" element={<EditMenuPage />} />
       <Route path={ROUTES.MUNELOGOUT} element={<MenuLogoutPage />} />
+      <Route path={ROUTES.PAYMENT} element={<PaymentForm />} />
+      <Route path={ROUTES.CONTACT} element={<Contact/>} />
+
       <Route
         path={ROUTES.LOGOUT}
         element={<ProtectedRoute element={<LogoutPage />} />}

@@ -7,12 +7,16 @@ import validateOrders from "../validation/orderValidtion";
 import ROUTES from "../routes/ROUTES";
 import useLoggedIn from "../hooks/useLoggedIn";
 import PopupComponents from "./PopupComponent";
+import { useSelector } from "react-redux";
 
 const PopupExample = () => {
+  const isLoggedIn = useSelector(
+    (bigPieBigState) => bigPieBigState.authSlice.isLoggedIn
+  );
   const [inputState, setInputState] = useState({
     name: "",
     phone: "",
-    email:"",
+    email: "",
     city: "",
     street: "",
     houseNumber: "",
@@ -20,8 +24,9 @@ const PopupExample = () => {
   });
   const [inputsErrorState, setInputsErrorState] = useState(null);
   const [show, setShow] = useState(false);
- /*  const logdin = useLoggedIn; */
+  /*  const logdin = useLoggedIn; */
   const navigate = useNavigate();
+ 
   const handeleBtnClick = async (ev) => {
     try {
       const joiResponse = validateOrders(inputState);
@@ -31,7 +36,7 @@ const PopupExample = () => {
         return;
       }
 
-      await axios.post("/orders",  {
+      await axios.post("/orders", {
         name: inputState.name,
         phone: inputState.phone,
         email: inputState.email,
@@ -42,17 +47,17 @@ const PopupExample = () => {
       });
       toast.success("The registration was done successfully");
       handleClose();
-      navigate(ROUTES.MENU)
+      navigate(ROUTES.MENU);
     } catch (err) {
       console.log("err", err);
       toast.error("Invalid user information");
     }
   };
-   const handleTakeAwayChange = (ev) => {
-     let newInputState = JSON.parse(JSON.stringify(inputState));
-     newInputState["takeAway"] = ev.target.checked;
-     setInputState(newInputState);
-   };
+  const handleTakeAwayChange = (ev) => {
+    let newInputState = JSON.parse(JSON.stringify(inputState));
+    newInputState["takeAway"] = ev.target.checked;
+    setInputState(newInputState);
+  };
   const handleInputChange = (ev) => {
     console.log(ev.target.value);
     let newInputState = JSON.parse(JSON.stringify(inputState));
@@ -66,9 +71,13 @@ const PopupExample = () => {
   const handleShow = () => setShow(true);
   return (
     <div>
-      <Button variant="warning" onClick={handleShow} className="buttonhome">
-        Click to order
-      </Button>
+      {isLoggedIn ? (
+        <Button variant="warning" onClick={handleShow} className="buttonhome">
+          Click to order
+        </Button>
+      ) : (
+        ""
+      )}
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton className="colinput">
@@ -84,26 +93,17 @@ const PopupExample = () => {
               inputsErrorState={inputsErrorState}
             />
           ))}
-          <Form.Group className="mb-3" id="takeAway"      >
+          <Form.Group className="mb-3" id="takeAway">
             <Form.Check
               type="checkbox"
               label="takeAway"
               value={inputState.takeAway}
               color="warning"
-              
-            
               onClick={handleTakeAwayChange}
             />
           </Form.Group>
-          {/* <Button variant="warning" onClick={handleClose} className="colinput">
-            Save Changes
-          </Button>
-
-          <Button variant="warning" onClick={handleClose} className="colinput">
-            Save Changes
-          </Button> */}
         </Modal.Body>
-        <Modal.Footer> 
+        <Modal.Footer>
           <Button
             variant="warning"
             onClick={handeleBtnClick}
@@ -115,7 +115,7 @@ const PopupExample = () => {
             variant="warning"
             type="submit"
             onClick={handleClose}
-          className="colinput"
+            className="colinput"
           >
             Cansel
           </Button>

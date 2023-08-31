@@ -7,9 +7,12 @@ import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import PopupExample from "../components/OrdersPopup";
 import PopupBook from "../components/BookAtablePopup";
-import Payment from "../components/Payment";
-import CreditPaymentForm from "../components/Payment";
-import PaymentForm from "../components/Payment";
+
+import PaymentForm from "./PaymentForm";
+import CardFood from "../components/Spies";
+import Slider from "../components/Slider";
+
+
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -39,16 +42,16 @@ const HomePage = () => {
         </p>
 
         <div className="divbuttonehome">
-          {/*  <Button variant="warning" className="buttonhome">
-            Book a table
-          </Button> */}
           <PopupBook variant="warning" onClick={handleButtonClick} />
 
           <PopupExample variant="warning" onClick={handleButtonClick} />
         </div>
-        <PaymentForm />
       </Container>
-      {/*  <CarouselHome /> */}
+      <CardFood />
+      <h3 className="subtitle">Our recommenders</h3>
+      <Slider />
+      {/*   {<SimpleSlider />} */}
+      {/*   <CarouselHome />   */}
     </Container>
   );
 };
