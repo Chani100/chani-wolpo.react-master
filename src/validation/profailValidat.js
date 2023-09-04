@@ -2,7 +2,7 @@ import Joi from "joi";
 
 import validation from "./validation";
 
-const registerSchema = Joi.object({
+const profailSchema = Joi.object({
   firstName: Joi.string().min(2).max(255).required(),
   lastName: Joi.string().min(2).max(255).required(),
   phone: Joi.string().min(9).max(14).required(),
@@ -11,15 +11,7 @@ const registerSchema = Joi.object({
     .max(256)
     .required()
     .email({ tlds: { allow: false } }),
-  password: Joi.string()
-    .pattern(
-      new RegExp(
-        /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
-      )
-    )
-    .min(8)
-    .max(10)
-    .required(),
+ 
   imageUrl: Joi.string()
     .regex(
       new RegExp(
@@ -36,7 +28,7 @@ const registerSchema = Joi.object({
   biz: Joi.boolean(),
 });
 
-const validateRegisterSchema = (userInput) =>
-  validation(registerSchema, userInput);
+const validateProfailSchema = (userInput) =>
+  validation(profailSchema, userInput);
 
-export default validateRegisterSchema;
+export default validateProfailSchema;

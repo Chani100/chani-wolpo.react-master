@@ -1,7 +1,7 @@
 import { Form, InputGroup } from "react-bootstrap";
 
 const PopupComponents = ({ item, inputState, onChange, inputsErrorState }) => {
-    if (item === "takeAway") return;
+  if (item === "takeAway") return;
   return (
     <InputGroup size="sm" className="mb-3">
       <InputGroup.Text>{item}</InputGroup.Text>
@@ -11,7 +11,6 @@ const PopupComponents = ({ item, inputState, onChange, inputsErrorState }) => {
         id={item}
         label={item}
         name={item}
-        className="colinput"
         autoComplete={item}
         value={inputState[item]}
         onChange={onChange}

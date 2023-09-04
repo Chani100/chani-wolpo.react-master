@@ -1,13 +1,14 @@
 import Button from "react-bootstrap/Button";
 import React, { useState } from "react";
-import { Container } from "react-bootstrap";
+import { Col, Container } from "react-bootstrap";
 import Cards from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useEffect } from "react";
 import jwt_decode from "jwt-decode";
-
+import "../css/crm&pay.css";
+import "../css/popup.css"
 import ROUTES from "../routes/ROUTES";
 import { useNavigate } from "react-router-dom";
 
@@ -43,9 +44,9 @@ const PaymentForm = () => {
 
   const handelButtonPay = async () => {
     try {
-      console.log(orderId, "orderId");
+   
       await axios.patch("/orders/orderStatus/" + orderId);
-
+   console.log(orderId, "orderId");
       toast.success("An order is currently in the works");
      navigate(ROUTES.HOME);
     } catch (err) {
@@ -141,69 +142,72 @@ const PaymentForm = () => {
         focused={state.focus}
       />
       <Container className="paymentCard">
-        <form>
-          <input
-            className="paymentForm"
-            type="number"
-            name="number"
-            placeholder="Card Number"
-            value={state.number}
-            onChange={handleInputChange}
-            onFocus={handleInputFocus}
-          />
-          {state.numberError && <p className="error">{state.numberError}</p>}
-        </form>
-        <form>
-          <input
-            className="paymentForm"
-            type="number"
-            name="expiry"
-            placeholder="Card expiry"
-            value={state.expiry}
-            onChange={handleInputChange}
-            onFocus={handleInputFocus}
-          />
-          {state.expiryError && <p className="error">{state.expiryError}</p>}
-        </form>
-        <form>
-          <input
-            className="paymentForm"
-            type="number"
-            name="cvc"
-            placeholder="Card cvc"
-            value={state.cvc}
-            onChange={handleInputChange}
-            onFocus={handleInputFocus}
-          />
-          {state.cvcError && <p className="error">{state.cvcError}</p>}
-        </form>
-        <form>
-          <input
-            className="paymentForm"
-            type="focus"
-            name="name"
-            placeholder="Card name"
-            value={state.name}
-            onChange={handleInputChange}
-            onFocus={handleInputFocus}
-          />
-          {state.nameError && <p className="error">{state.nameError}</p>}
-        </form>
+        <Col md={{ span: 6, offset: 4 }} xs={12}>
+          <form>
+            <input
+              className="paymentForm"
+              type="number"
+              name="number"
+              placeholder="Card Number"
+              value={state.number}
+              onChange={handleInputChange}
+              onFocus={handleInputFocus}
+            />
+            {state.numberError && <p className="error">{state.numberError}</p>}
+          </form>
+          <form>
+            <input
+              className="paymentForm"
+              type="number"
+              name="expiry"
+              placeholder="Card expiry"
+              value={state.expiry}
+              onChange={handleInputChange}
+              onFocus={handleInputFocus}
+            />
+            {state.expiryError && <p className="error">{state.expiryError}</p>}
+          </form>
+          <form>
+            <input
+              className="paymentForm"
+              type="number"
+              name="cvc"
+              placeholder="Card cvc"
+              value={state.cvc}
+              onChange={handleInputChange}
+              onFocus={handleInputFocus}
+            />
+            {state.cvcError && <p className="error">{state.cvcError}</p>}
+          </form>
+          <form>
+            <input
+              className="paymentForm"
+              type="focus"
+              name="name"
+              placeholder="Card name"
+              value={state.name}
+              onChange={handleInputChange}
+              onFocus={handleInputFocus}
+            />
+            {state.nameError && <p className="error">{state.nameError}</p>}
+          </form>
+        </Col>
       </Container>
-
-      <Button
-        className="buttonPay buttonhome"
-        variant="warning"
-        onClick={handelButtonPay}
-        disabled={
-          state.nameError === null ||
-          state.expiryError === null ||
-          state.numberError === null ||
-          state.cvcError === null
-        }
-      >
-        Pay
-      </Button>
+      <Col md={{ span: 6, offset: 4 }} xs={12}>
+        <Button
+          className="buttonPay buttonhome"
+          variant="warning"
+          onClick={handelButtonPay}
+          disabled={
+            state.nameError === null ||
+            state.expiryError === null ||
+            state.numberError === null ||
+            state.cvcError === null
+          }
+        >
+          Pay
+        </Button>
+      </Col>
     </Container>
   );
 };

@@ -10,7 +10,8 @@ const ROUTES = {
   //   PROFILE: "/profile",
   LOGOUT: "/logout",
   PAYMENT: "/payment",
- CONTACT:"/contact"
+ CONTACT:"/contact",
+ PROFAIL:"/Profail",
   //   ABOUT:"/about",
 
   //   FAVCARD:"/favCards"

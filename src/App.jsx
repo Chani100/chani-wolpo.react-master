@@ -61,7 +61,9 @@ function App() {
       <main>
         <Router />
       </main>
-      <Footer />
+      <footer>
+        <Footer />
+      </footer>
     </div>
     /* </ThemeProvider>  */
   );

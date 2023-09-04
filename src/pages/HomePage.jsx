@@ -1,7 +1,7 @@
 import { Container, Image, Row } from "react-bootstrap";
 import ROUTES from "../routes/ROUTES";
 import CarouselHome from "../components/Carosel.jsx";
-
+import"../css/home_page.css"
 import Button from "react-bootstrap/Button";
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";

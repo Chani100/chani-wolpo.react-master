@@ -8,6 +8,7 @@ import ROUTES from "../routes/ROUTES";
 import useLoggedIn from "../hooks/useLoggedIn";
 import PopupComponents from "./PopupComponent";
 import { useSelector } from "react-redux";
+import "../css/popup.css";
 
 const PopupExample = () => {
   const isLoggedIn = useSelector(

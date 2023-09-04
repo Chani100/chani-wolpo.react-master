@@ -19,6 +19,8 @@ const RegisterPage = () => {
     phone: "",
     email: "",
     password: "",
+    imageUrl:"",
+    imageAlt:"",
     city: "",
     street: "",
     houseNumber: "",
@@ -57,6 +59,7 @@ const RegisterPage = () => {
          
       });
   navigate(ROUTES.LOGIN); 
+   toast.success("The registration was successful");
     } catch (err) {
  toast.error("Invalid user information");
 

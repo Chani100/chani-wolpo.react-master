@@ -5,6 +5,8 @@ const CreatCardMenuCom = ({ item, inputState, inputsErrorState, onChange }) => {
     const category = isCategory.includes(item);
   return category ? (
     <Col xs={12} md={6}>
+     
+
       <Form.Select
         aria-label="Default select example"
         className="colinput input_category"
@@ -15,7 +17,6 @@ const CreatCardMenuCom = ({ item, inputState, inputsErrorState, onChange }) => {
         isValid={inputState[item]}
         isInvalid={inputsErrorState && inputsErrorState[item]}
       >
-    
         <option>Main dishes</option>
         <option>drinking</option>
       </Form.Select>

@@ -5,7 +5,7 @@ import TableCRM from '../components/TableCRM';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
-
+import "../css/crm&pay.css"
 const CRMPage =()=>{
   const [order, setOrder] = useState();
 

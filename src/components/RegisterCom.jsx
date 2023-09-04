@@ -10,6 +10,8 @@ const RequiredF = [
   "phone",
   "email",
   "password",
+  "imagUrl",
+  "imagAlt",
   "city",
   "street",
   "houseNumber",

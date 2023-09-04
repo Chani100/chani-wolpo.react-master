@@ -16,16 +16,12 @@ const PopupSmile = () => {
   const handleShow = () => setShow(true);
   return (
     <div>
-      <Button variant="warning" onClick={handleShow} className="buttonhome">
-        Click to order
+      <Button variant="warning" onClick={handleShow} className="colinput">
+        sending
       </Button>
-
       <Modal className="divPopupSmile" show={show} onHide={handleClose}>
         <div className="animationContainer">
-          <Image
-            className="imgPopupSmile"
-            src="../image/smileImge.jpg"
-          />
+          <Image className="imgPopupSmile" src="../image/smileImge.jpg" />
         </div>
       </Modal>
     </div>

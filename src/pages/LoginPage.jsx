@@ -66,6 +66,7 @@ const LoginPage = () => {
     const cancel = () => {
       navigate(ROUTES.HOME);
     };
+ 
     return (
       <Container>
         <h1 className="title">login</h1>

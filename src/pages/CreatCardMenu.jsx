@@ -66,6 +66,10 @@ const CraetCardMenu = () => {
             }
           />
         </Col>
+        {/* <Form.Group controlId="formFile" >
+          <Form.Label className="text_file">to select from the file folder</Form.Label>
+          <Form.Control type="file" className="colinput input_category" />
+        </Form.Group> */}
         <Col md={{ span: 6, offset: 3 }} xs={12}>
           <Row className="mb-3">
             {keys.map((item) => (
@@ -75,7 +79,6 @@ const CraetCardMenu = () => {
                 inputState={inputState}
                 onChange={handleInputChange}
                 inputsErrorState={inputsErrorsState}
-               
               />
             ))}
           </Row>

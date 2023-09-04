@@ -1,4 +1,13 @@
-import { Button, Card, Col, Container, Form, Image, ListGroup, Row } from "react-bootstrap";
+import {
+  Button,
+  Card,
+  Col,
+  Container,
+  Form,
+  Image,
+  ListGroup,
+  Row,
+} from "react-bootstrap";
 import ImagePopup from "./ImagePopup";
 import {
   BsCurrencyDollar,
@@ -25,14 +34,14 @@ const MenuComponent = ({
   canDelete,
   canEdit,
   canAdd,
-  listOrCard
+  listOrCard,
 }) => {
   const isLoggedIn = useSelector(
     (bigPieBigState) => bigPieBigState.authSlice.isLoggedIn
   );
   const [amount, setaAmount] = useState(1);
   const [isFilled, setIsFilled] = useState(false);
-  
+
   const handleAddToOrder = async () => {
     setIsFilled(!isFilled);
     try {
@@ -78,9 +87,9 @@ const MenuComponent = ({
     onEdit(id);
   };
   return (
-    <Row>
+    <Container>
       {listOrCard ? (
-        <Form.Group as={Col}>
+        <Form.Group>
           <ListGroup className="alert">
             <div className="product-list">
               <div key={id} className="product-item">
@@ -180,17 +189,16 @@ const MenuComponent = ({
           </ListGroup>
         </Form.Group>
       ) : (
-        
-          <Col md={6} lg={4}>
-            <Card className="cardMenu">
-              <Image src={imageUrl} className="img_title" roundedCircle />
-              <Card.Body className="cardBody">
-                <Card.Title className="card_title">{title}</Card.Title>
-                <Card.Text className="card_text">{description}</Card.Text>
-                <h5 className="card_price">
-                  {price} <BsCurrencyDollar />
-                </h5>
-                {/* <Row className="mb-3"> */}
+      
+          <Card className="cardMenu">
+            <Image src={imageUrl} className="img_title" roundedCircle />
+            <Card.Body className="cardBody">
+              <Card.Title className="card_title">{title}</Card.Title>
+              <Card.Text className="card_text">{description}</Card.Text>
+              <h5 className="card_price">
+                {price} <BsCurrencyDollar />
+              </h5>
+              <div className="button_admin_menu">
                 {canDelete && (
                   <Button
                     variant="warning"
@@ -209,57 +217,56 @@ const MenuComponent = ({
                     <BsPencilFill />
                   </Button>
                 )}
-                {canAdd ? (
-                  <Button
-                    variant="warning"
-                    className="buttenAddMenu cardButten"
-                    onClick={handlePlos}
-                  >
-                    <BsFillCaretUpFill />
-                  </Button>
-                ) : (
-                  ""
-                )}
-                {canAdd ? (
-                  <Button
-                    variant="warning"
-                    className="buttenAddMenu cardButten"
-                    onClick={handleAddToOrder}
-                  >
-                    {amount}
-                  </Button>
-                ) : (
-                  ""
-                )}
-                {canAdd ? (
-                  <Button
-                    variant="warning"
-                    className="buttenAddMenu cardButten"
-                    onClick={handleMinoc}
-                  >
-                    <BsFillCaretDownFill />
-                  </Button>
-                ) : (
-                  ""
-                )}
-                {canAdd && (
-                  <Button
-                    variant="warning"
-                    onClick={handleAddToOrder}
-                    className={isFilled ? "alertlink filled" : "alertlink"}
-                    id="cardButten"
-                    href="#"
-                  >
-                    {isFilled ? "Added to order" : "Add to order"}
-                  </Button>
-                )}
-                {/* </Row> */}
-              </Card.Body>
-            </Card>
-          </Col>
-      
+              </div>
+              {canAdd ? (
+                <Button
+                  variant="warning"
+                  className="buttenAddMenu cardButten"
+                  onClick={handlePlos}
+                >
+                  <BsFillCaretUpFill />
+                </Button>
+              ) : (
+                ""
+              )}
+              {canAdd ? (
+                <Button
+                  variant="warning"
+                  className="buttenAddMenu cardButten"
+                  onClick={handleAddToOrder}
+                >
+                  {amount}
+                </Button>
+              ) : (
+                ""
+              )}
+              {canAdd ? (
+                <Button
+                  variant="warning"
+                  className="buttenAddMenu cardButten"
+                  onClick={handleMinoc}
+                >
+                  <BsFillCaretDownFill />
+                </Button>
+              ) : (
+                ""
+              )}
+              {canAdd && (
+                <Button
+                  variant="warning"
+                  onClick={handleAddToOrder}
+                  className={isFilled ? "alertlink filled" : "alertlink"}
+                  id="cardButten"
+                  href="#"
+                >
+                  {isFilled ? "Added to order" : "Add to order"}
+                </Button>
+              )}
+            </Card.Body>
+          </Card>
+       
       )}
-    </Row>
+    </Container>
   );
 };
 export default MenuComponent;

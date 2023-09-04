@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import validatebookAtable from "../validation/bookAtableValidation";
 import ROUTES from "../routes/ROUTES";
 import useLoggedIn from "../hooks/useLoggedIn";
-
+import"../css/popup.css"
 import { useSelector } from "react-redux";
 import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
 import PopupComponents from "./PopupComponent";
@@ -158,7 +158,7 @@ const PopupBook = () => {
         </Modal.Header>
         <Modal.Body>
           {/* <BookTable /> */}
-          <Container className="table-page">
+          <div className="table-page">
             <Form>
               <Row className="mb-3">
                 <Col xs={12} md={4}>
@@ -223,19 +223,20 @@ const PopupBook = () => {
                 </Col>
               </Row>
             </Form>
-            <Button
-              variant="primary"
-              type="submit"
-              onClick={handeleBtnContinued}
-              className="button_book"
-            >
-              <BsArrowRightShort />
-              <BsArrowRightShort />
-              Continued
-              <BsArrowLeftShort />
-              <BsArrowLeftShort />
-            </Button>
-          </Container>
+            <Col md={{ span: 6, offset: 4 }} xs={12}>
+              <Button
+                variant="warning"
+                onClick={handeleBtnContinued}
+                className="colinput"
+              >
+                <BsArrowRightShort />
+                <BsArrowRightShort />
+                Continued
+                <BsArrowLeftShort />
+                <BsArrowLeftShort />
+              </Button>
+            </Col>
+          </div>
           {from ? (
             <Form>
               {keys.map((item) => (

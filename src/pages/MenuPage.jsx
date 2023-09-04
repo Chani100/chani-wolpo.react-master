@@ -8,6 +8,7 @@ import {
   Row,
   Spinner,
 } from "react-bootstrap";
+import "../css/menu.css";
 import MenuComponent from "../components/MenuComponent";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -148,9 +149,9 @@ const MenuPage = () => {
           <BsListUl style={{ fontSize: "2rem" }} />
         )} */}
         {listOrCard ? (
-          <BsCardHeading style={{ fontSize: "2rem" }} />
+          <BsCardHeading style={{ fontSize: "1.5rem" }} />
         ) : (
-          <BsListUl style={{ fontSize: "2rem" }} />
+          <BsListUl style={{ fontSize: "1.5rem" }} />
         )}
       </Button>
       <h1 className="title"> menu</h1>
@@ -183,7 +184,7 @@ const MenuPage = () => {
         <Form.Check inline label="4" name="group1" type="radio" />
         <Form.Check inline label="5" name="group1" type="radio" />
 
-        <Row>
+        <Col>
           <h2 className="subtitleh2"> {selectedCategory}</h2>
 
           {selectedCategory !== null
@@ -233,7 +234,7 @@ const MenuPage = () => {
                   ))}
                 </div>
               ))}
-        </Row>
+        </Col>
       </div>
       <ButtonCreatCom canCreate={payload && payload.isAdmin} />
       <CompletionOfAnOrder variant="warning" orderId={orderIdMenu} />

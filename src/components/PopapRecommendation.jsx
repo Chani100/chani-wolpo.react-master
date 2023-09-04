@@ -1,4 +1,5 @@
 import axios from "axios";
+import "../css/popup.css";
 import { useEffect } from "react";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
@@ -10,7 +11,7 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import jwt_decode from "jwt-decode";
 import validaterecommendationschema from "../validation/validetContact";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ROUTES from "../routes/ROUTES";
 import Smile from "./PopupSmile";
 import PopupSmile from "./PopupSmile";
@@ -26,9 +27,10 @@ const Recommendation = () => {
   const navigate = useNavigate;
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
   const id = jwt_decode(localStorage.token)._id;
-  console.log(inputState);
+ 
   useEffect(() => {
     (async () => {
+      
       try {
         const { data } = await axios.get("/users/" + id);
         const userid = { ...data };
@@ -42,8 +44,8 @@ const Recommendation = () => {
   const AddRecommendation = async () => {
     try {
       await axios.patch("/users/contact/" + id, inputState);
-  /*    handleClose();  */
-  setTimeout(handleClose, 5000);
+      /*    handleClose();  */
+      setTimeout(handleClose, 5000);
     } catch (err) {
       toast.error(err.response.data);
     }
@@ -67,10 +69,10 @@ const Recommendation = () => {
   return (
     <div>
       <Button variant="warning" className="buttonhome" onClick={handleShow}>
-        Launch demo modal
+        We were ranked
       </Button>
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header closeButton className="colinput">
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -102,11 +104,18 @@ const Recommendation = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="warning" onClick={handleClose} className="colinput">
             Close
           </Button>
-          <Button variant="primary" onClick={AddRecommendation}> <PopupSmile /></Button>
+
+           <Link
+          
+            onClick={AddRecommendation}
          
+          
+          > 
+            <PopupSmile />
+         </Link> 
         </Modal.Footer>
       </Modal>
     </div>

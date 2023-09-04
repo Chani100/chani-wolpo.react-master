@@ -16,6 +16,7 @@ import MenuLogoutPage from "../pages/MenuLogout";
 import LogoutPage from "../pages/LogoutPage";
 import PaymentForm from "../pages/PaymentForm"; 
 import Contact from "../pages/Contact";
+import Profail from "../pages/Profail";
 
 
 // import NestedPage1 from "../pages/NestedRoutePage/NestedPage1";
@@ -40,8 +41,8 @@ const Router = () => {
       <Route path="/edit/:id" element={<EditMenuPage />} />
       <Route path={ROUTES.MUNELOGOUT} element={<MenuLogoutPage />} />
       <Route path={ROUTES.PAYMENT} element={<PaymentForm />} />
-      <Route path={ROUTES.CONTACT} element={<Contact/>} />
-
+      <Route path={ROUTES.CONTACT} element={<Contact />} />
+      <Route path={ROUTES.PROFAIL} element={<Profail />} />
       <Route
         path={ROUTES.LOGOUT}
         element={<ProtectedRoute element={<LogoutPage />} />}

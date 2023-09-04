@@ -1,35 +1,24 @@
 import React, { useState } from "react";
 import { Breadcrumb, BreadcrumbItem } from "react-bootstrap";
-import "../css/navbar.css";
+
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import Col from "react-bootstrap/Col";
-import Image from "react-bootstrap/Image";
-import Row from "react-bootstrap/Row";
 import ROUTES from "../routes/ROUTES";
-import { BsFillSunFill, BsMoonFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { darkThemeActions } from "../store/darkTheme";
 import { authActions } from "../store/auth";
-
+import Avatar from "./AvatarCom";
+import { useNavigate } from "react-router-dom";
 const Navbars = () => {
   const [activeLink, setActiveLink] = useState("");
   const isLoggedIn = useSelector(
     (bigPieBigState) => bigPieBigState.authSlice.isLoggedIn
   );
+
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
   const dispatch = useDispatch();
-  const isDarkTheme = useSelector(
-    (bigPie) => bigPie.darkThemeSlice.isDarkTheme
-  );
-
-  const changeTheme = () => {
-    dispatch(darkThemeActions.changeTheme());
-  };
 
   const logoutClick = () => {
     localStorage.clear();
@@ -41,7 +30,7 @@ const Navbars = () => {
   };
 
   return (
-    <Navbar className="navbar" expand="lg" /* className="bg-body-tertiary" */>
+    <Navbar className="navbar" expand="lg">
       <Container fluid>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -62,13 +51,21 @@ const Navbars = () => {
             <Nav.Link
               id="nav"
               href={ROUTES.ABOUT}
-              className={activeLink === "Home" ? "active" : ""}
+              className={activeLink === "About" ? "active" : ""}
               onClick={handleLinkClick}
             >
               About
             </Nav.Link>
+            <Nav.Link
+              id="nav"
+              href={ROUTES.CONTACT}
+              className={activeLink === "Contact" ? "active" : ""}
+              onClick={handleLinkClick}
+            >
+              Contact
+            </Nav.Link>
 
-            {isLoggedIn ? (
+            {isLoggedIn && !payload.isAdmin ? (
               <Nav.Link
                 id="nav"
                 href={ROUTES.MUNELOGOUT}
@@ -142,15 +139,19 @@ const Navbars = () => {
             ) : (
               ""
             )}
+            {isLoggedIn && payload.isAdmin ? (
+              <Nav.Link
+                id="nav"
+                href={ROUTES.MENU}
+                className={activeLink === "Link" ? "active" : ""}
+                onClick={handleLinkClick}
+              >
+                MENU
+              </Nav.Link>
+            ) : (
+              ""
+            )}
           </Nav>
-         
-        
-          {/* /* <div sx={{ display: { xs: "none", md: "inline" } }}>
-            {isDarkTheme ? "Dark" : "Light"} Mode
-          </div>
-           <Button onClick={changeTheme}>
-            {isDarkTheme ? <BsFillSunFill /> : <BsMoonFill />}
-          </Button> */} 
           <Form className="d-flex">
             <Form.Control
               type="search"
@@ -160,16 +161,7 @@ const Navbars = () => {
             />
             <Button variant="outline-success">Search</Button>
           </Form>
-          <div className="profile-picture-container">
-            <Image
-              src={
-                "https://dalicanvas.co.il/wp-content/uploads/2022/10/%D7%A9%D7%A7%D7%99%D7%A2%D7%94-%D7%A7%D7%9C%D7%90%D7%A1%D7%99%D7%AA-1.jpg"
-              }
-              roundedCircle
-              className="profile-picture"
-            />
-            <span className="ml-2">{""}</span>
-          </div>
+          {isLoggedIn ? <Avatar /> : ""}
         </Navbar.Collapse>
       </Container>
     </Navbar>

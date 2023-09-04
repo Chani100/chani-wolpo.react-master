@@ -8,6 +8,7 @@ import {
   Row,
   Spinner,
 } from "react-bootstrap";
+import "../css/menu.css";
 import MenuComponent from "../components/MenuComponent";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -24,7 +25,7 @@ const MenuLogoutPage = () => {
   const [cardsArr, setCardsArr] = useState(null);
   const [listOrCard, setListOrCard] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  
+
   const navigate = useNavigate();
   let qparams = useQueryParams();
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
@@ -63,7 +64,7 @@ const MenuLogoutPage = () => {
   useEffect(() => {
     filterFunc();
   }, [qparams.filter]);
-const handelListOrCard = () => {
+  const handelListOrCard = () => {
     setListOrCard(!listOrCard);
   };
   if (!cardsArr) {
@@ -75,7 +76,7 @@ const handelListOrCard = () => {
   const handleButtonClick = () => {
     navigate(ROUTES.MENU);
   };
-  
+
   const categories = [
     "Main dishes",
     "drinking",
