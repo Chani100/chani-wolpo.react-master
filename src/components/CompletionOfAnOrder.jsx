@@ -103,6 +103,7 @@ const CompletionOfAnOrder = ({ orderId }) => {
           <Table striped bordered hover>
             <thead>
               <tr>
+                <th>img</th>
                 <th>product</th>
                 <th>Amount</th>
                 <th>price</th>
@@ -115,6 +116,8 @@ const CompletionOfAnOrder = ({ orderId }) => {
                   <TableOrder
                     key={item._id + Date.now()}
                     idCardsArr={item._id}
+                    imageUrl={item.imageUrl}
+                    alt={item.alt}
                     title={item.title}
                     price={item.price}
                     amount={item.amount}

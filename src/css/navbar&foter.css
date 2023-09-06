@@ -89,3 +89,9 @@
   font-size: 1.5em;
   font-weight: 500;
 }
+.Search{
+  border-radius: 10px;
+  height: 45px;
+  margin-right: 10px;
+
+}

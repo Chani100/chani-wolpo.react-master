@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../store/auth";
 import Avatar from "./AvatarCom";
 import { useNavigate } from "react-router-dom";
+import SearchPartial from "./SearchPartial";
 const Navbars = () => {
   const [activeLink, setActiveLink] = useState("");
   const isLoggedIn = useSelector(
@@ -73,6 +74,18 @@ const Navbars = () => {
                 onClick={handleLinkClick}
               >
                 Menu
+              </Nav.Link>
+            ) : (
+              ""
+            )}
+            {isLoggedIn ? (
+              <Nav.Link
+                id="nav"
+                href={ROUTES.MYORDERS}
+                className={activeLink === "Link" ? "active" : ""}
+                onClick={handleLinkClick}
+              >
+                My orders
               </Nav.Link>
             ) : (
               ""
@@ -152,15 +165,7 @@ const Navbars = () => {
               ""
             )}
           </Nav>
-          <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
+          <SearchPartial />
           {isLoggedIn ? <Avatar /> : ""}
         </Navbar.Collapse>
       </Container>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import "../css/popup.css";
+import"../css/popup.css"
 import { useEffect } from "react";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
@@ -88,7 +88,7 @@ const Recommendation = () => {
                 count={5}
                 onChange={handleRatingChange}
                 size={24}
-                activeColor="#ffd700"
+                activeColor="red"
                 value={rating}
               />
               <Form.Label>My Recommendation</Form.Label>

@@ -123,7 +123,7 @@ const MenuLogoutPage = () => {
         type="radio"
         onClick={() => handleCategoryClick("Main dishes")}
       />
-      <Row>
+     
         <h2 className="subtitleh2"> {selectedCategory}</h2>
 
         {selectedCategory !== null
@@ -159,7 +159,7 @@ const MenuLogoutPage = () => {
                 ))}
               </div>
             ))}
-      </Row>
+      
       <PopupExample variant="warning" onClick={handleButtonClick} />
     </Container>
   );

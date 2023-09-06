@@ -14,10 +14,12 @@ import MenuLogoutPage from "../pages/MenuLogout";
 // import ProfilePage from "../pages/ProfilePage";
 // import SuperProtectedRoute from "../components/SuperProtectedRoute";
 import LogoutPage from "../pages/LogoutPage";
-import PaymentForm from "../pages/PaymentForm"; 
+import PaymentForm from "../pages/PaymentForm";
 import Contact from "../pages/Contact";
 import Profail from "../pages/Profail";
-
+import MyOrders from "../pages/AllMyOrders";
+import MyOrder from "../pages/MyOrder";
+import AboutPage from "../pages/About";
 
 // import NestedPage1 from "../pages/NestedRoutePage/NestedPage1";
 // import NestedPage2 from "../pages/NestedRoutePage/NestedPage2";
@@ -43,12 +45,16 @@ const Router = () => {
       <Route path={ROUTES.PAYMENT} element={<PaymentForm />} />
       <Route path={ROUTES.CONTACT} element={<Contact />} />
       <Route path={ROUTES.PROFAIL} element={<Profail />} />
+      <Route path={ROUTES.MYORDERS} element={<MyOrders />} />
+      {/*    <Route path={ROUTES.ORDER} element={<MyOrder />} /> */}
+      <Route path="/order/:id" element={<MyOrder />} />
+      <Route path={ROUTES.ABOUT} element={<AboutPage />} />
       <Route
         path={ROUTES.LOGOUT}
         element={<ProtectedRoute element={<LogoutPage />} />}
       />
     </Routes>
-    //  <Route path={ROUTES.ABOUT} element={<About />} />
+
     //       <Route  path="infor/:id" element=// {<InformationCard />} />
 
     //       <Route

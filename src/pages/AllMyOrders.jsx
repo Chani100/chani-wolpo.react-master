@@ -1,39 +1,37 @@
 import axios from "axios";
-import { Col, Container } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
-import TableCRM from "../components/TableCRM";
 import { useState } from "react";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
-import "../css/crm&pay.css";
-const CRMPage = () => {
+import jwt_decode from "jwt-decode";
+import MyOrdersCom from "../components/MyOrdersCom";
+import { useNavigate } from "react-router-dom";
+const MyOrders = () => {
+  const id = jwt_decode(localStorage.token)._id;
   const [order, setOrder] = useState();
-
+const navigate = useNavigate();
   useEffect(() => {
-    getOrders();
+    getUllOrders();
   }, []);
 
-  const getOrders = async () => {
+  const getUllOrders = async () => {
     try {
-      const orders = await axios.get("/orders");
-      console.log(orders.data);
-      setOrder(orders.data);
+      const ullOrders = await axios.get("/orders/my-order-ull/" + id);
+      console.log(ullOrders.data);
+      setOrder(ullOrders.data);
     } catch (err) {
       console.log(err);
       toast.error(err.response);
     }
   };
-
+const handleInfoOrder = (id) => {
+  navigate(`/order/${id}`);
+}; 
   return (
     <Table striped bordered hover>
       <thead className="tablacrm">
         <tr className="crmHeader">
-          <th>Biz Number</th>
           <th className="medieCrm">Name</th>
-          <th>Phone</th>
-          <th className="medieCrm">Email</th>
-          <th className="medieCrm">Street</th>
-          <th className="medieCrm">House Number</th>
           <th>Take Away</th>
           <th>Order Status</th>
           <th className="medieCrm">CreatedAt</th>
@@ -42,21 +40,18 @@ const CRMPage = () => {
       <tbody className="tablacrm">
         {order &&
           order.map((item) => (
-            <TableCRM
+            <MyOrdersCom
               key={item._id + Date.now()}
-              bizNumber={item.bizNumber}
+              id={item._id}
               name={item.name}
-              phone={item.phone}
-              email={item.email}
-              street={item.street}
-              houseNumber={item.houseNumber}
               takeAway={item.takeAway}
               orderStatus={item.orderStatus}
               createdAt={item.createdAt}
+              onInfo={handleInfoOrder}
             />
           ))}
       </tbody>
     </Table>
   );
 };
-export default CRMPage;
+export default MyOrders;

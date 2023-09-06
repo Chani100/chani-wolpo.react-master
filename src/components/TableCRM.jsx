@@ -1,4 +1,4 @@
-import { Col } from "react-bootstrap";
+ import { Col } from "react-bootstrap";
 import { BsCheck2, BsFileExcel, BsFileX, BsFillCheckSquareFill, BsFillFileExcelFill, BsUiChecks } from "react-icons/bs";
 
 const TableCRM = ({

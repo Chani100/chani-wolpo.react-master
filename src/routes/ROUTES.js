@@ -10,9 +10,11 @@ const ROUTES = {
   //   PROFILE: "/profile",
   LOGOUT: "/logout",
   PAYMENT: "/payment",
- CONTACT:"/contact",
- PROFAIL:"/Profail",
-  //   ABOUT:"/about",
+  CONTACT: "/contact",
+  PROFAIL: "/Profail",
+  MYORDERS: "/MyOrders",
+/*   ORDER:"/order", */
+ ABOUT:"/about",
 
   //   FAVCARD:"/favCards"
 };
