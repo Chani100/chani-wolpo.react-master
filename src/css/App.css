@@ -66,10 +66,10 @@ height: 200px;
 .navbar{
   background-color: #eb8989;
 }
-.active {
+/* .active {
   
   background-color: #da6161;
-}
+} */
 
   .profile-picture-container {
   display: flex;

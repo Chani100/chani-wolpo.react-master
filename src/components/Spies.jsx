@@ -7,33 +7,24 @@ const CardFood = () => {
         <h3 className="subtitle">Our chefs</h3>
         <Card className="card">
           <Card.Body>
-            <Card.Img variant="top" src="../image/chefs-1.jpg" />
+            <Card.Img variant="top" src="../images/chefs-1.jpg" />
 
-            <Card.Title>Card Title</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text>
+            <Card.Title>Walter White</Card.Title>
+            <Card.Text>Master Chef</Card.Text>
           </Card.Body>
         </Card>
         <Card className="card">
-          <Card.Img variant="top" src="../image/chefs-2.jpg" />
+          <Card.Img variant="top" src="../images/chefs-2.jpg" />
           <Card.Body>
-            <Card.Title>Card Title</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text>
+            <Card.Title>Sarah Jhonson</Card.Title>
+            <Card.Text>Patissier</Card.Text>
           </Card.Body>
         </Card>
         <Card className="card">
-          <Card.Img variant="top" src="../image/chefs-3.jpg" />
+          <Card.Img variant="top" src="../images/chefs-3.jpg" />
           <Card.Body>
-            <Card.Title>Card Title</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text>
+            <Card.Title>William Anderson</Card.Title>
+            <Card.Text>CookBreads</Card.Text>
           </Card.Body>
         </Card>
       </Row>

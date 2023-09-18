@@ -25,7 +25,7 @@ const PopupBook = () => {
   const [from, setFrom] = useState(false);
 
   const [inputsErrorState, setInputsErrorState] = useState(null);
-  // console.log(inputsErrorState);
+  
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const payload = useSelector((bigPie) => bigPie.authSlice.payload);
@@ -41,7 +41,6 @@ const PopupBook = () => {
       setInputsErrorState(joiResponse);
 
       if (joiResponse) {
-        console.log(joiResponse);
         toast.error("Invalid user information");
         return;
       }
@@ -59,12 +58,10 @@ const PopupBook = () => {
       setFrom(!from);
       navigate(ROUTES.HOME);
     } catch (err) {
-      console.log("err", err);
       toast.error("Invalid user information");
     }
   };
   const handleInputChange = (ev) => {
-    // console.log(ev.target.value);
     let newInputState = JSON.parse(JSON.stringify(inputState));
     newInputState[ev.target.id] = ev.target.value;
     setInputState(newInputState);
@@ -121,7 +118,10 @@ const PopupBook = () => {
     for (let hour = startHour; hour <= endHour; hour++) {
       const formattedHour = String(hour).padStart(2, "0");
       options.push(
-        <option key={formattedHour} value={formattedHour}>
+        <option
+          key={formattedHour}
+          /* value={formattedHour} */ value={`${formattedHour}:00`}
+        >
           {formattedHour}:00
         </option>
       );
@@ -185,7 +185,7 @@ const PopupBook = () => {
                       type="time"
                       id="time"
                       as="select"
-                      value={inputState.time}
+                      value={inputState.time }
                       onChange={
                         handleInputChange
                       } /*{(e) => setTime(e.target.value)} */

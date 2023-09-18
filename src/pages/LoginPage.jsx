@@ -34,7 +34,6 @@ const LoginPage = () => {
       loggedIn();
       navigate(ROUTES.HOME); 
     } catch (err) {
-   console.log(err.response.data);
       toast.error("There is an error,"+ err.response.data.msg); 
      
     }

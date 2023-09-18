@@ -38,14 +38,14 @@ const Profail = () => {
     try {
       const joiResponse = validateProfailSchema(inputState);
       setinputsErrorState(joiResponse);
-      if (!joiResponse) console.log(joiResponse);{
+      if (!joiResponse){
         await axios.put("/users/" + id, inputState);
 
         toast.success("The change was successfully saved");
         navigate(ROUTES.LOGIN);
       }
     } catch (err) {
-      console.log("err", err);
+  
       toast.error("There is an error," + "" + err.response.data.message);
     }
   };

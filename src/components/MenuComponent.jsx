@@ -20,7 +20,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-
+import "../css/media.css"
 const MenuComponent = ({
   id,
   orderId,
@@ -70,13 +70,14 @@ const MenuComponent = ({
   const handleDes = async () => {
     try {
       const orderdis = await axios.get("/orders/" + orderId);
-      console.log(orderId);
-      const menuid =
-        orderdis && orderdis.data.OrderMenu.find((item) => item[1] === id);
-      if (menuid) {
+      const foundItem = orderdis.data.OrderMenu.find((item) => item[1] === id);
+      if (foundItem) {
+        const foundItemId = foundItem[0];
+        setaAmount(foundItemId);
         setIsFilled(!isFilled);
       }
     } catch (err) {
+      // console.log(err.response.data);
       toast.error(err.response.data);
     }
   };
@@ -88,9 +89,9 @@ const MenuComponent = ({
   };
   return (
     <Container>
-      {listOrCard ? (
-        <Form.Group>
-          <ListGroup className="alert">
+
+        <Form.Group className="alert">
+          <ListGroup >
             <div className="product-list">
               <div key={id} className="product-item">
                 <ImagePopup imageUrl={imageUrl} alt={alt} />
@@ -148,7 +149,6 @@ const MenuComponent = ({
                     variant="warning"
                     onClick={handleAddToOrder}
                     className={isFilled ? "alertlink filled" : "alertlink"}
-                    /*  href="#" */
                   >
                     {isFilled ? "Added to order" : "Add to order"}
                   </Button>
@@ -188,84 +188,7 @@ const MenuComponent = ({
             </div>
           </ListGroup>
         </Form.Group>
-      ) : (
-      
-          <Card className="cardMenu">
-            <Image src={imageUrl} className="img_title" roundedCircle />
-            <Card.Body className="cardBody">
-              <Card.Title className="card_title">{title}</Card.Title>
-              <Card.Text className="card_text">{description}</Card.Text>
-              <h5 className="card_price">
-                {price} <BsCurrencyDollar />
-              </h5>
-              <div className="button_admin_menu">
-                {canDelete && (
-                  <Button
-                    variant="warning"
-                    onClick={handelButtenDelete}
-                    className="buttenDelEdiMenu"
-                  >
-                    <BsTrashFill />
-                  </Button>
-                )}
-                {canEdit && (
-                  <Button
-                    variant="warning"
-                    onClick={handeleBtnEdit}
-                    className="buttenDelEdiMenu"
-                  >
-                    <BsPencilFill />
-                  </Button>
-                )}
-              </div>
-              {canAdd ? (
-                <Button
-                  variant="warning"
-                  className="buttenAddMenu cardButten"
-                  onClick={handlePlos}
-                >
-                  <BsFillCaretUpFill />
-                </Button>
-              ) : (
-                ""
-              )}
-              {canAdd ? (
-                <Button
-                  variant="warning"
-                  className="buttenAddMenu cardButten"
-                  onClick={handleAddToOrder}
-                >
-                  {amount}
-                </Button>
-              ) : (
-                ""
-              )}
-              {canAdd ? (
-                <Button
-                  variant="warning"
-                  className="buttenAddMenu cardButten"
-                  onClick={handleMinoc}
-                >
-                  <BsFillCaretDownFill />
-                </Button>
-              ) : (
-                ""
-              )}
-              {canAdd && (
-                <Button
-                  variant="warning"
-                  onClick={handleAddToOrder}
-                  className={isFilled ? "alertlink filled" : "alertlink"}
-                  id="cardButten"
-                  href="#"
-                >
-                  {isFilled ? "Added to order" : "Add to order"}
-                </Button>
-              )}
-            </Card.Body>
-          </Card>
-       
-      )}
+   
     </Container>
   );
 };

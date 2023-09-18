@@ -29,7 +29,7 @@ const Avatar = () => {
         const urlUser = userid.imageUrl;
         setImag(urlUser);
       } catch (err) {
-        console.log(err);
+      
       }
     })();
   }, [payload]);

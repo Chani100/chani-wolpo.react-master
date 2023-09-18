@@ -20,6 +20,7 @@ import Profail from "../pages/Profail";
 import MyOrders from "../pages/AllMyOrders";
 import MyOrder from "../pages/MyOrder";
 import AboutPage from "../pages/About";
+import OrderDetails from "../pages/OrderDetails";
 
 // import NestedPage1 from "../pages/NestedRoutePage/NestedPage1";
 // import NestedPage2 from "../pages/NestedRoutePage/NestedPage2";
@@ -48,11 +49,13 @@ const Router = () => {
       <Route path={ROUTES.MYORDERS} element={<MyOrders />} />
       {/*    <Route path={ROUTES.ORDER} element={<MyOrder />} /> */}
       <Route path="/order/:id" element={<MyOrder />} />
+      <Route path="/crm/:id" element={<OrderDetails />} />
       <Route path={ROUTES.ABOUT} element={<AboutPage />} />
       <Route
         path={ROUTES.LOGOUT}
         element={<ProtectedRoute element={<LogoutPage />} />}
       />
+      
     </Routes>
 
     //       <Route  path="infor/:id" element=// {<InformationCard />} />

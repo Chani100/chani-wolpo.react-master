@@ -35,7 +35,6 @@ const PaymentForm = () => {
         const order = await axios.get("orders/my-order-findOne/" + id);
         setOrderId(order.data);
       } catch (err) {
-        console.log("err", err);
         toast.error(err);
       }
     };
@@ -46,7 +45,6 @@ const PaymentForm = () => {
     try {
    
       await axios.patch("/orders/orderStatus/" + orderId);
-   console.log(orderId, "orderId");
       toast.success("An order is currently in the works");
      navigate(ROUTES.HOME);
     } catch (err) {

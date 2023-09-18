@@ -55,7 +55,6 @@ const EditMenuPage = () => {
         navigate(ROUTES.MENU);
       }
     } catch (err) {
-      console.log("err", err);
       toast.error("There is an error," + "" + err.response.data.message);
     }
   };

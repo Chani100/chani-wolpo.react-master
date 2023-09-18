@@ -13,8 +13,9 @@ const ROUTES = {
   CONTACT: "/contact",
   PROFAIL: "/Profail",
   MYORDERS: "/MyOrders",
-/*   ORDER:"/order", */
- ABOUT:"/about",
+  /*   ORDER:"/order", */
+  ABOUT: "/about",
+
 
   //   FAVCARD:"/favCards"
 };

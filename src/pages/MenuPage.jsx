@@ -5,10 +5,13 @@ import {
   Container,
   Form,
   Image,
+  Nav,
   Row,
   Spinner,
 } from "react-bootstrap";
+
 import "../css/menu.css";
+import "../css/media.css";
 import MenuComponent from "../components/MenuComponent";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -23,6 +26,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import PopupExample from "../components/OrdersPopup";
 import ROUTES from "../routes/ROUTES";
 import PopupSmile from "../components/PopupSmile";
+import CardMenu from "../components/CardMenu";
 const MenuPage = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [displayCategories, setDisplayCategories] = useState(false);
@@ -115,7 +119,7 @@ const MenuPage = () => {
   if (!cardsArr) {
     return <Spinner animation="grow" variant="warning" className="spiner" />;
   }
-  const getCategoryContent = (category) => {
+  /*  const getCategoryContent = (category) => {
     switch (category) {
       case "drinking":
         return <p>Drinking content goes here</p>;
@@ -124,18 +128,21 @@ const MenuPage = () => {
       default:
         return null;
     }
-  };
+  }; */
   const categories = [
+    "Breads",
+    "Salads",
+    "Soups",
+    "Extras",
     "Main dishes",
-    "drinking",
-    "Category 3",
-    "Category 4",
-    "Category 5",
+    "Desserts",
+    "Drinking",
   ];
 
   const filterItemsByCategory = (category) => {
     return cardsArr.filter((item) => item.category === category);
   };
+
   return (
     <Container>
       <Button
@@ -143,11 +150,6 @@ const MenuPage = () => {
         className="buttonList"
         onClick={handelListOrCard}
       >
-        {/*  {listOrCard ? (
-          <BsCardHeading style={{ fontSize: "2rem" }} />
-        ) : (
-          <BsListUl style={{ fontSize: "2rem" }} />
-        )} */}
         {listOrCard ? (
           <BsCardHeading style={{ fontSize: "1.5rem" }} />
         ) : (
@@ -155,65 +157,103 @@ const MenuPage = () => {
         )}
       </Button>
       <h1 className="title"> menu</h1>
+      <ButtonCreatCom canCreate={payload && payload.isAdmin} />
       <div>
-        <Form.Check
-          className="radioMenu"
-          inline
-          label="For the full menu"
-          name="group1"
-          type="radio"
-          checked={displayCategories}
-          onChange={handleShowAllCategories}
-        />
-        <Form.Check
-          className="radioMenu"
-          inline
-          label="drinking"
-          name="group1"
-          type="radio"
-          onClick={() => handleCategoryClick("drinking")}
-        />
-        <Form.Check
-          className="radioMenu"
-          inline
-          label="Main Dishes"
-          name="group1"
-          type="radio"
-          onClick={() => handleCategoryClick("Main dishes")}
-        />
-        <Form.Check inline label="4" name="group1" type="radio" />
-        <Form.Check inline label="5" name="group1" type="radio" />
-
-        <Col>
+        <Nav
+          className="nav_catgory"
+          variant="underline"
+          defaultActiveKey="/home"
+        >
+          <Nav.Item className="nav_item_catgory">
+            <Nav.Link
+              eventKey="link-1"
+              onClick={() => handleCategoryClick(null)}
+            >
+              All
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item className="nav_item_catgory">
+            <Nav.Link
+              eventKey="link-2"
+              onClick={() => handleCategoryClick("Breads")}
+            >
+              Breads
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item className="nav_item_catgory">
+            <Nav.Link
+              eventKey="link-3"
+              onClick={() => handleCategoryClick("Salads")}
+            >
+              Salads
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item className="nav_item_catgory">
+            <Nav.Link
+              eventKey="link-4"
+              onClick={() => handleCategoryClick("Soups")}
+            >
+              Soups
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item className="nav_item_catgory">
+            <Nav.Link
+              eventKey="link-5"
+              onClick={() => handleCategoryClick("Extras")}
+            >
+              Extras
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item className="nav_item_catgory">
+            <Nav.Link
+              eventKey="link-6"
+              onClick={() => handleCategoryClick("Main dishes")}
+            >
+              Main dishes
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item className="nav_item_catgory">
+            <Nav.Link
+              eventKey="link-7"
+              onClick={() => handleCategoryClick("Desserts")}
+            >
+              Desserts
+            </Nav.Link>
+          </Nav.Item>{" "}
+          <Nav.Item className="nav_item_catgory">
+            <Nav.Link
+              eventKey="link-8"
+              onClick={() => handleCategoryClick("Drinking")}
+            >
+              Drinking
+            </Nav.Link>
+          </Nav.Item>
+        </Nav>
+        <div>
           <h2 className="subtitleh2"> {selectedCategory}</h2>
-
           {selectedCategory !== null
             ? cardsArr
                 .filter((item) => item.category === selectedCategory)
-                .map((item) => (
-                  <MenuComponent
-                    key={item._id + Date.now()}
-                    id={item._id}
-                    imageUrl={item.imageUrl}
-                    imageAlt={item.imageAlt}
-                    title={item.title}
-                    description={item.description}
-                    price={item.price}
-                    orderId={orderIdMenu}
-                    onDelete={handleDeleteFromInitialCardsArr}
-                    onEdit={handleEditFromInitialCardsArr}
-                    canEdit={payload && payload.isAdmin}
-                    canDelete={payload && payload.isAdmin}
-                    canAdd={!(payload && payload.isAdmin)}
-                    canFav={payload}
-                    listOrCard={listOrCard}
-                  />
-                ))
-            : categories.map((category) => (
-                <div key={category}>
-                  <h3 className="subtitleh2">{category}</h3>
-
-                  {filterItemsByCategory(category).map((item) => (
+                .map((item) =>
+                  !listOrCard ? (
+                    <CardMenu
+                      key={item._id + Date.now()}
+                      id={item._id}
+                      imageUrl={item.imageUrl}
+                      imageAlt={item.imageAlt}
+                      title={item.title}
+                      description={item.description}
+                      price={item.price}
+                      orderId={orderIdMenu}
+                      onDelete={handleDeleteFromInitialCardsArr}
+                      onEdit={handleEditFromInitialCardsArr}
+                      canEdit={payload && payload.isAdmin}
+                      canDelete={payload && payload.isAdmin}
+                      canAdd={!(payload && payload.isAdmin)}
+                      canFav={payload}
+                      listOrCard={listOrCard}
+                    />
+                  ) : (
                     <MenuComponent
                       key={item._id + Date.now()}
                       id={item._id}
@@ -231,14 +271,60 @@ const MenuPage = () => {
                       canFav={payload}
                       listOrCard={listOrCard}
                     />
-                  ))}
+                  )
+                )
+            : categories.map((category) => (
+                <div key={category}>
+                  <h3 className="subtitleh2">{category}</h3>
+             
+                    <div className="row">
+                      {filterItemsByCategory(category).map((item) =>
+                        !listOrCard ? (
+                          <CardMenu
+                            key={item._id + Date.now()}
+                            id={item._id}
+                            imageUrl={item.imageUrl}
+                            imageAlt={item.imageAlt}
+                            title={item.title}
+                            description={item.description}
+                            price={item.price}
+                            orderId={orderIdMenu}
+                            onDelete={handleDeleteFromInitialCardsArr}
+                            onEdit={handleEditFromInitialCardsArr}
+                            canEdit={payload && payload.isAdmin}
+                            canDelete={payload && payload.isAdmin}
+                            canAdd={!(payload && payload.isAdmin)}
+                            canFav={payload}
+                            listOrCard={listOrCard}
+                          />
+                        ) : (
+                          <MenuComponent
+                            key={item._id + Date.now()}
+                            id={item._id}
+                            imageUrl={item.imageUrl}
+                            imageAlt={item.imageAlt}
+                            title={item.title}
+                            description={item.description}
+                            price={item.price}
+                            orderId={orderIdMenu}
+                            onDelete={handleDeleteFromInitialCardsArr}
+                            onEdit={handleEditFromInitialCardsArr}
+                            canEdit={payload && payload.isAdmin}
+                            canDelete={payload && payload.isAdmin}
+                            canAdd={!(payload && payload.isAdmin)}
+                            canFav={payload}
+                            listOrCard={listOrCard}
+                          />
+                        )
+                      )}
+                    </div>
+                  
                 </div>
               ))}
-        </Col>
+        </div>
       </div>
-      <ButtonCreatCom canCreate={payload && payload.isAdmin} />
+
       <CompletionOfAnOrder variant="warning" orderId={orderIdMenu} />
-     
     </Container>
   );
 };

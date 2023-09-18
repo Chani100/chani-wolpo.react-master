@@ -38,7 +38,7 @@ const RegisterPage = () => {
       }
       if (inputState.imageUrl == "") {
         inputState.imageUrl =
-          "https://cdn.pixabay.com/photo/2020/04/07/17/01/chicks-5014152_960_720.jpg";
+          "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
       }
       if (inputState.imageAlt == "") {
         inputState.imageAlt = "yellow fluffy chickens";
@@ -101,13 +101,7 @@ const RegisterPage = () => {
             ))}
           </Row>
           <Form.Group className="mb-3" id="formGridCheckbox">
-            <Form.Check
-              type="checkbox"
-              id="biz"
-              className="biz"
-              label="I want to receive updates and exclusive offers, plus a 5% discount on every order"
-              onClick={handleBizChange}
-            />
+            ;11;                                                                    
           </Form.Group>
           <Row className="mb-3">
             <Button

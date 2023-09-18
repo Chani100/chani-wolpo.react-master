@@ -21,14 +21,11 @@ const Slider = () => {
   const getAllUser = async () => {
     try {
       const allUser = await axios.get("/users");
-      console.log(allUser.data);
       setInputState(allUser.data);
     } catch (err) {
-      console.log(err);
       toast.error(err.response);
     }
   };
-  console.log(inputState);
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },

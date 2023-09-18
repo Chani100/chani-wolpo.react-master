@@ -31,7 +31,6 @@ const MyOrder = () => {
         const { data } = await axios.get("orders/" + id);
         const menuOrderMyOrder = data.OrderMenu;
         setMenuOrder(menuOrderMyOrder);
-        console.log(menuOrderMyOrder, "menuOrderMyOrder");
         let order = {
           ...data,
         };
@@ -40,7 +39,6 @@ const MyOrder = () => {
         delete order.__v;
         delete order.OrderMenu;
         setOrder(order);
-        console.log("order", order);
       } catch (err) {
         toast.error(err.response._id);
       }
@@ -63,7 +61,6 @@ const MyOrder = () => {
           });
         setCardsArr(card);
       } catch (err) {
-        console.log(err);
         toast.error(err.response._id);
       }
     };
@@ -82,7 +79,6 @@ const MyOrder = () => {
 
     calculateTotalSum();
   }, [cardsArr]);
-  console.log(totalSum, "totalSum");
   const handeleBtnContinued = () => {
     setFrom(!from);
   };
@@ -96,8 +92,6 @@ const MyOrder = () => {
     navigate(ROUTES.HOME);
   };
   const keys = Object.keys(order);
-  console.log("keys", keys);
-  //   console.log("order", order);
   return (
     <Container>
       <h1 className="title">My Order</h1>

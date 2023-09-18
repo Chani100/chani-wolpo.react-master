@@ -4,7 +4,7 @@
 .footer {
   background-color: rgba(252, 215, 94, 0.181);
   height: 450px;
-  
+
   flex-shrink: 0;
 }
 .name_footer {
@@ -30,9 +30,8 @@
 .icon_footer {
   width: 20px;
   height: 20px;
- color: rgb(252, 215, 94);
-   transition: transform 0.3s ease-in-out;
-
+  color: rgb(252, 215, 94);
+  transition: transform 0.3s ease-in-out;
 }
 .icon_footer:hover {
   transform: scale(1.5);
@@ -46,25 +45,15 @@
 .center-content {
   text-align: center;
 }
-.whatsapp_footer {
-  width: 30px;
-  height: 30px;
-  color: rgb(5, 122, 5);
-}
+
 .active {
-  /* color: aliceblue; */
-  /*  background-color: #da6161;  */
-  /*  background-color: rgb(252, 215, 94); */
   text-shadow: -3px -3px 4px rgba(253, 104, 119, 0.93);
-
-  border-bottom: 4px solid rgba(253, 104, 119, 0.93);
-  /*  border-color: rgba(253, 104, 119, 0.93); 
-     border-bottom-left-radius:  ; */
+ /*  border-bottom: 4px solid rgba(253, 104, 119, 0.93); */
 }
 
-/* .navbar .nav-link.active {
-  color: blue;
-} */
+.navLink {
+  margin: 10px;
+}
 
 .profile-picture-container {
   display: flex;
@@ -89,9 +78,14 @@
   font-size: 1.5em;
   font-weight: 500;
 }
-.Search{
+#nav:hover {
+  text-shadow: -3px -3px 4px rgba(253, 104, 119, 0.93);
+}
+.Search {
   border-radius: 10px;
   height: 45px;
   margin-right: 10px;
-
+}
+.nav_item_catgory a:hover {
+  color: aliceblue;
 }

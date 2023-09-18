@@ -50,7 +50,6 @@ const PopupExample = () => {
       handleClose();
       navigate(ROUTES.MENU);
     } catch (err) {
-      console.log("err", err);
       toast.error("Invalid user information");
     }
   };
@@ -60,7 +59,6 @@ const PopupExample = () => {
     setInputState(newInputState);
   };
   const handleInputChange = (ev) => {
-    console.log(ev.target.value);
     let newInputState = JSON.parse(JSON.stringify(inputState));
     newInputState[ev.target.id] = ev.target.value;
     setInputState(newInputState);

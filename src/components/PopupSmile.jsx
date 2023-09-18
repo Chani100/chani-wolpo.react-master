@@ -21,7 +21,7 @@ const PopupSmile = () => {
       </Button>
       <Modal className="divPopupSmile" show={show} onHide={handleClose}>
         <div className="animationContainer">
-          <Image className="imgPopupSmile" src="../image/smileImge.jpg" />
+          <Image className="imgPopupSmile" src="../images/smileImge.jpg" />
         </div>
       </Modal>
     </div>

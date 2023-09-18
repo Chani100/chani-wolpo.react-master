@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Button, Col, Container, Form, Image, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../routes/ROUTES";
-
 import validateCreateSchema from "../validation/createValidation";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -25,14 +24,12 @@ const CraetCardMenu = () => {
     try {
       const joiResponse = validateCreateSchema(inputState);
       setInputsErrorsState(joiResponse);
-      console.log(joiResponse);
       if (!joiResponse) {
         await axios.post("/cards/", inputState);
         toast.success("A new business card has been created");
         navigate(ROUTES.MENU);
       }
     } catch (err) {
-      console.log(err);
       toast.error("The operation failed");
     }
   };

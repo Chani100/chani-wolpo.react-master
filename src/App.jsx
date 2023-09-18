@@ -12,7 +12,11 @@ import useLoggedIn from "./hooks/useLoggedIn";
 import { Container } from "react-bootstrap";
 import Footer from "./components/Footer";
 import Navbars from "./components/Navbarrr";
-
+import LogoutTimer from "./components/Logout";
+import { useNavigate } from "react-router-dom";
+import ROUTES from "./routes/ROUTES";
+import ProtectedRoute from "./components/ProtectedRoute";
+const naviget = useNavigate;
 const light = {
   palette: {
     mode: "light",
@@ -38,8 +42,13 @@ function App() {
   const isDarkTheme = useSelector(
     (bigPie) => bigPie.darkThemeSlice.isDarkTheme
   );
+ 
+  const handleLogout = () => {
+    naviget(ROUTES.LOGIN);
+  };
   return (
     /* <ThemeProvider theme={isDarkTheme ? createTheme(dark) : createTheme(light)}> */
+
     <div>
       <ToastContainer
         position="top-center"
@@ -53,6 +62,8 @@ function App() {
         pauseOnHover
         theme="colored"
       />
+
+      <LogoutTimer onLogout={handleLogout} /> : {/* <ProtectedRoute /> */}
 
       <header>
         <Navbars />

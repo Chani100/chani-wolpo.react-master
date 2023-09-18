@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap"
 const AboutPage = ()=>{
     return (
       <Container>
-        <h1 className="title">Abut</h1>
+        <h1 className="title">About</h1>
         <h1 className="subtitle"> Welcome to the restaurant The meats!</h1>
         <p className="phome">
           <p className="pAbuot">Login:</p> You can register on the site for
@@ -47,8 +47,18 @@ const AboutPage = ()=>{
           the picture will change in Nav Bar and in the recommendations.
         </p>
         <p className="phome">
-          <p className="pAbuot"> crm:</p> an admin user will also be able to log
-          in to the crm page to view all the order forms.
+          <p className="pAbuot"> crm:</p> An admin user will also be able to
+          enter the CRM page and access the user management interface displayed
+          in the user table, which displays the number of users registered in
+          the database on the site and displays their details in the table. On
+          this page you can delete users or change their status from a regular
+          admin user. In addition, there is an order management interface
+          displayed in the order table, which shows the number of orders
+          registered in the database and their details and the order status. On
+          this page, you can access each order separately and change the order
+          status. There is another table reservation management interface
+          displayed in the table reservations table, which shows the number of
+          table reservations available in the database.
         </p>
         <p className="phome">
           <p className="pAbuot">footer:</p> at the bottom of each page appears

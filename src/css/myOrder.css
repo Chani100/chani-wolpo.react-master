@@ -15,4 +15,8 @@
     color: rgb(252, 215, 94);
     border-bottom: 3px solid rgb(252, 215, 94);
     font-size: 20px;
+   justify-content: center;
+}
+.nav-underline .nav-link.active, .nav-underline .show>.nav-link{
+  color:rgb(252, 215, 94); 
 }

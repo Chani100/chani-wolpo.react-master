@@ -29,7 +29,6 @@ const CompletionOfAnOrder = ({ orderId }) => {
     try {
       const orders = await axios.get("/orders/" + orderId);
       const completion = orders.data.OrderMenu;
-      console.log(completion);
       return completion;
     } catch (err) {
       toast.error(err.response._id);
@@ -38,7 +37,6 @@ const CompletionOfAnOrder = ({ orderId }) => {
 
   const getOrderData = async () => {
     const orderArr = await completionOrderMenu();
-    console.log("orderArr", orderArr);
     if (!orderArr) {
       return;
     }
@@ -56,7 +54,6 @@ const CompletionOfAnOrder = ({ orderId }) => {
         });
       setCardsArr(card);
     } catch (err) {
-      console.log(err);
     }
   };
   useEffect(() => {
@@ -75,8 +72,6 @@ const CompletionOfAnOrder = ({ orderId }) => {
 
     calculateTotalSum();
   }, [cardsArr]);
-
-  console.log(cardsArr);
   const cancel = () => {
     handleClose();
     navigate(ROUTES.MENU);

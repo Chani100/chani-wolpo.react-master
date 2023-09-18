@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 const ProtectedRoute = ({ element }) => {
   //* logic section
   const isLoggedIn = useSelector((bigState) => bigState.authSlice.isLoggedIn);
- 
+
   //* html section
   if (isLoggedIn) {
     return element;

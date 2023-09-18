@@ -1,5 +1,6 @@
 import { BsArrowDown, BsChevronDoubleDown } from "react-icons/bs";
 import"../css/contact.css"
+
 import Recommendation from "../components/PopapRecommendation";
 import {
   Col,
@@ -30,10 +31,8 @@ const Contact = () => {
   const isLoggedIn = useSelector(
     (bigPieBigState) => bigPieBigState.authSlice.isLoggedIn
   );
-
   const [inputsErrorState, setInputsErrorState] = useState(null);
   const joiResponse = validateContactSchema(inputState);
-  console.log("inputsErrorState", inputsErrorState);
 
   const handleInputChange = (ev) => {
     let newInputState = JSON.parse(JSON.stringify(inputState));

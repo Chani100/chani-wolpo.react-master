@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import "../css/media.css";
 const Footer = () => {
  const openEmailBox=()=> {
    const subject = encodeURIComponent("I would be happy to contact you");
@@ -51,7 +52,7 @@ const Footer = () => {
     <footer className="footer">
       <Container className="center-content">
         <div className="center-content">
-          <Image className="logo_footer" src="../image/logo1.png" />
+          <Image className="logo_footer" src="../images/logo1.png" />
 
           <h6 className="name_footer">A quality meat restaurant</h6>
           <div className="div_footer">
